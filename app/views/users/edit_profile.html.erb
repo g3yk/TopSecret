@@ -1,0 +1,53 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'signup' %> <!-- Link to your specific CSS file -->
+<% end %>
+
+<h2>Edit Profile</h2>
+<%= form_with model: @user, local: true, url: update_profile_path, class: "signup-form", method: :put do |form| %>
+  <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email, required: true, disabled: true %>
+  </div>
+  <div>
+    <%= form.label :username %>
+    <%= form.text_field :username, required: true %>
+  </div>
+  <div>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, required: true %>
+  </div>
+  <div>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, required: true %>
+  </div>
+  <div>
+    <%= form.label :date_of_birth %>
+    <%= form.date_field :date_of_birth, required: true %>
+  </div>
+  <div>
+    <%= form.label :country_id %>
+    <%= form.collection_select(:country_id, Country.all, :id, :name, prompt: 'Select a Country', required: true) %>
+  </div>
+  <div>
+    <%= form.label :phone %>
+    <%= form.telephone_field :phone, placeholder: '+xx xxxxxxxxxx' %>
+  </div>
+  <div>
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+  <div>
+    <%= form.label :job_title %>
+    <%= form.text_field :job_title %>
+  </div>
+  <div>
+    <%= form.label :avatar %>
+    <%= form.file_field :avatar, accept: 'image/png,image/jpeg,image/jpg' %>
+  </div>
+  <div>
+    <%= form.label :bio %>
+    <%= form.text_area :bio, rows: 10, placeholder: "Tell us about yourself..." %>
+  </div>
+  <%= form.submit "Update Profile" %>
+<% end %>

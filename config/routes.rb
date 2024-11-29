@@ -1,8 +1,33 @@
 Rails.application.routes.draw do
   root "pages#home"
 
-  get "about" => "pages#about", :as => :about
-  get "contact" => "pages#contact", :as => :contact
+  get "about" => "pages#about"
+  get "contact" => "pages#contact"
+
+  # Authorization
+  get "sign_up", to: "users#sign_up", as: :sign_up
+  post "sign_up", to: "users#create"
+
+  post "login", to: "sessions#create"
+  delete "logout", to: "sessions#destroy"
+  get "login", to: "sessions#new"
+
+  # Account
+  get "account", to: "users#account"
+
+  get "account/edit", to: "users#edit_profile", as: :edit_profile
+  put "account/edit_profile", to: "users#edit", as: :update_profile
+
+  get "account/change_password", to: "users#change_password", as: :change_password
+  put "account/change_password", to: "users#update_password", as: :update_password
+
+  delete "account/delete", to: "users#destroy"
+
+  # Users
+  get "users", to: "users#all"
+  get "/:username", to: "users#show", as: :user
+
+  get "404", to: "errors#not_found", as: :not_found
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,0 +1,23 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'signup' %> <!-- Link to your specific CSS file -->
+<% end %>
+
+<h2>Login</h2>
+
+<%= form_with url: login_path, scope: :user, class: "signup-form" do |form| %>
+  <% if flash.now[:error] %>
+    <div style="color: red; text-align: center; font-style: italic">
+      <%= flash.now[:error] %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :login %>
+    <%= form.text_field :login, placeholder: "Username or Email", required: true %>
+  </div>
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password, required: true %>
+  </div>
+  <%= form.submit "Sign In" %>
+<% end %>
