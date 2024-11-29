@@ -1,4 +1,10 @@
-<h1>Pages#home</h1>
+<h1>Home Page</h1>
+<p style='font-style: italic;'>Edit in app/views/pages/home.html.erb</p>
+
+<ul style="padding: 0; text-align: center; list-style-type: none; font-size: 1.25rem; line-height: 1.75rem;">
+  <li><%= link_to "About", about_path %></li>
+  <li><%= link_to "Contact", contact_path %></li>
+</ul>
 
 <% if user_signed_in? %>
   <h3>Hello, <span style="font-style: italic;"><%= current_user.first_name %> <%= current_user.last_name %></span></h3>

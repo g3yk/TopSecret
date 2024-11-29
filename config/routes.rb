@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   root "pages#home"
 
-  get "users/new"
-  get "users/create"
-  get "home" => "pages#home", :as => :home
+  get "about" => "pages#about"
+  get "contact" => "pages#contact"
 
   # Authorization
   get "sign_up", to: "users#sign_up", as: :sign_up
