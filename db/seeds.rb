@@ -11,89 +11,6 @@
 User.destroy_all
 Country.destroy_all
 
-User.create([
-  {
-    id: 1,
-    email: "user1@user",
-    created_at: Time.current,
-    updated_at: Time.current,
-    password_digest: "$2a$12$Gl22Z3F0tXrTRtH6m/.RguFuxb9N4aVsL9xLMdU.ZafJOVrGb//RK",
-    username: "user1",
-    first_name: "John",
-    last_name: "Ripper",
-    phone: "+1111 1111111111",
-    city: "Istanbul",
-    job_title: "Software",
-    date_of_birth: "2024-11-28",
-    bio: "",
-    country_id: 2
-  },
-  {
-    id: 2,
-    email: "user2@user",
-    created_at: Time.current,
-    updated_at: Time.current,
-    password_digest: "$2a$12$v.K4itfRNRhAz8xCT1zG9.TlMqZ3z.AsZ3xdt4l.cCwyHFDRuA0a2",
-    username: "user2",
-    first_name: "User Name 2",
-    last_name: "User Last Name 2",
-    phone: "+11 1111111111",
-    city: "",
-    job_title: "",
-    date_of_birth: "2024-11-28",
-    bio: "",
-    country_id: 17
-  },
-  {
-    id: 3,
-    email: "user3@user",
-    created_at: Time.current,
-    updated_at: Time.current,
-    password_digest: "$2a$12$v.K4itfRNRhAz8xCT1zG9.TlMqZ3z.AsZ3xdt4l.cCwyHFDRuA0a2",
-    username: "user3",
-    first_name: "User Name 3",
-    last_name: "User Last Name 3",
-    phone: "+11 1111111111",
-    city: "",
-    job_title: "",
-    date_of_birth: "2024-11-28",
-    bio: "",
-    country_id: 19
-  },
-  {
-    id: 4,
-    email: "user4@user",
-    created_at: Time.current,
-    updated_at: Time.current,
-    password_digest: "$2a$12$v.K4itfRNRhAz8xCT1zG9.TlMqZ3z.AsZ3xdt4l.cCwyHFDRuA0a2",
-    username: "user4",
-    first_name: "User Name 4",
-    last_name: "User Last Name 4",
-    phone: "+11 1111111111",
-    city: "",
-    job_title: "",
-    date_of_birth: "2024-11-28",
-    bio: "",
-    country_id: 32
-  },
-  {
-    id: 5,
-    email: "user5@user",
-    created_at: Time.current,
-    updated_at: Time.current,
-    password_digest: "$2a$12$v.K4itfRNRhAz8xCT1zG9.TlMqZ3z.AsZ3xdt4l.cCwyHFDRuA0a2",
-    username: "user5",
-    first_name: "User Name 5",
-    last_name: "User Last Name 5",
-    phone: "+11 1111111111",
-    city: "",
-    job_title: "",
-    date_of_birth: "2024-11-28",
-    bio: "",
-    country_id: 98
-  }
-])
-
 Country.create(
   [
     {
@@ -1352,6 +1269,89 @@ Country.create(
     }
   ]
 )
+
+User.create([
+  {
+    id: 1,
+    email: "user1@user",
+    created_at: Time.current,
+    updated_at: Time.current,
+    password_digest: "$2a$12$Gl22Z3F0tXrTRtH6m/.RguFuxb9N4aVsL9xLMdU.ZafJOVrGb//RK",
+    username: "user1",
+    first_name: "John",
+    last_name: "Ripper",
+    phone: "+1111 1111111111",
+    city: "Istanbul",
+    job_title: "Software",
+    date_of_birth: "2024-11-28",
+    bio: "",
+    country_id: 2
+  },
+  {
+    id: 2,
+    email: "user2@user",
+    created_at: Time.current,
+    updated_at: Time.current,
+    password_digest: "$2a$12$v.K4itfRNRhAz8xCT1zG9.TlMqZ3z.AsZ3xdt4l.cCwyHFDRuA0a2",
+    username: "user2",
+    first_name: "User Name 2",
+    last_name: "User Last Name 2",
+    phone: "+11 1111111111",
+    city: "",
+    job_title: "",
+    date_of_birth: "2024-11-28",
+    bio: "",
+    country_id: 17
+  },
+  {
+    id: 3,
+    email: "user3@user",
+    created_at: Time.current,
+    updated_at: Time.current,
+    password_digest: "$2a$12$v.K4itfRNRhAz8xCT1zG9.TlMqZ3z.AsZ3xdt4l.cCwyHFDRuA0a2",
+    username: "user3",
+    first_name: "User Name 3",
+    last_name: "User Last Name 3",
+    phone: "+11 1111111111",
+    city: "",
+    job_title: "",
+    date_of_birth: "2024-11-28",
+    bio: "",
+    country_id: 19
+  },
+  {
+    id: 4,
+    email: "user4@user",
+    created_at: Time.current,
+    updated_at: Time.current,
+    password_digest: "$2a$12$v.K4itfRNRhAz8xCT1zG9.TlMqZ3z.AsZ3xdt4l.cCwyHFDRuA0a2",
+    username: "user4",
+    first_name: "User Name 4",
+    last_name: "User Last Name 4",
+    phone: "+11 1111111111",
+    city: "",
+    job_title: "",
+    date_of_birth: "2024-11-28",
+    bio: "",
+    country_id: 32
+  },
+  {
+    id: 5,
+    email: "user5@user",
+    created_at: Time.current,
+    updated_at: Time.current,
+    password_digest: "$2a$12$v.K4itfRNRhAz8xCT1zG9.TlMqZ3z.AsZ3xdt4l.cCwyHFDRuA0a2",
+    username: "user5",
+    first_name: "User Name 5",
+    last_name: "User Last Name 5",
+    phone: "+11 1111111111",
+    city: "",
+    job_title: "",
+    date_of_birth: "2024-11-28",
+    bio: "",
+    country_id: 98
+  }
+])
 
 puts "Created #{User.count} users."
 puts "Created #{Country.count} country."

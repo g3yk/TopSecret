@@ -1,7 +1,59 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: MyString
+  id: 1
+  name: "United States"
+  created_at: "2024-11-28"
+  updated_at: "2024-11-28"
 
 two:
-  name: MyString
+  id: 2
+  name: "China"
+  created_at: "2024-11-28"
+  updated_at: "2024-11-28"
+
+three:
+  id: 3
+  name: "Germany"
+  created_at: "2024-11-28"
+  updated_at: "2024-11-28"
+
+four:
+  id: 4
+  name: "Japan"
+  created_at: "2024-11-28"
+  updated_at: "2024-11-28"
+
+five:
+  id: 5
+  name: "India"
+  created_at: "2024-11-28"
+  updated_at: "2024-11-28"
+
+six:
+  id: 6
+  name: "United Kingdom"
+  created_at: "2024-11-28"
+  updated_at: "2024-11-28"
+
+seven:
+  id: 7
+  name: "France"
+  created_at: "2024-11-28"
+  updated_at: "2024-11-28"
+
+eight:
+  id: 8
+  name: "Italy"
+  created_at: "2024-11-28"
+  updated_at: "2024-11-28"
+
+nine:
+  id: 9
+  name: "Canada"
+  created_at: "2024-11-28"
+  updated_at: "2024-11-28"
+
+ten:
+  id: 10
+  name: "Brazil"
+  created_at: "2024-11-28"
+  updated_at: "2024-11-28"

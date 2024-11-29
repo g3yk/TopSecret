@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:destroy, :change_password, :destroy, :update_password]
+  before_action :authenticate_user!, only: [
+    :destroy,
+    :change_password,
+    :destroy,
+    :update_password,
+    :edit_profile
+  ]
 
   def all
     @users = User.order(created_at: :desc).limit(10)
@@ -9,7 +15,9 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
 
     if @user.nil?
-      render "errors/not_found", locals: {error: "User `#{params[:username]}` not found"}
+      render "errors/not_found", locals: {
+        error: "User `#{params[:username]}` not found"
+      }
     end
   end
 
