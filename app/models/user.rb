@@ -12,9 +12,26 @@ class User < ApplicationRecord
   belongs_to :country # , optional: true
   has_one_attached :avatar
 
-  validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true, length: {maximum: 100}
-  validates :username, presence: true, uniqueness: true, length: {minimum: 5, maximum: 20}, format: {with: /\A[a-zA-Z0-9_]+\z/, message: "only allows letters, numbers, and underscores"}
-  validates :phone, presence: true, format: {with: /\A\+\d{1,4} \d{10}\z/, message: "must be in the format: +1 XXXXXXXXXX"}, on: :update
+  validates :email,
+    format: {
+      with: URI::MailTo::EMAIL_REGEXP
+    },
+    presence: true, uniqueness: true,
+    length: {
+      maximum: 100
+    }
+  validates :username, presence: true, uniqueness: true,
+    length: {
+      minimum: 5, maximum: 20
+    },
+    format: {
+      with: /\A[a-zA-Z0-9_]+\z/, message: "only allows letters, numbers, and underscores"
+    }
+  validates :phone, presence: true,
+    format: {
+      with: /\A\+\d{1,4} \d{10}\z/, message: "must be in the format: +1 XXXXXXXXXX"
+    },
+    on: :update
 
   validate :prevent_username_and_email_change, on: :update
   validate :correct_avatar_mime_type
