@@ -23,9 +23,14 @@ Rails.application.routes.draw do
 
   delete "account/delete", to: "users#destroy"
 
-  # Users
-  get "users", to: "users#all"
-  get "/:username", to: "users#show", as: :user
+  # Posts
+  get "timeline", to: "posts#followings_posts", as: :timeline
+  post "posts/create", to: "posts#create", as: :create_post
+  get "posts/upload", to: "posts#new", as: :upload_post
+  get "posts/:id", to: "posts#show", as: :show_post
+  put "posts/:id/update", to: "posts#update", as: :update_post
+  get "posts/:id/edit", to: "posts#edit", as: :edit_post
+  delete "posts/:id/delete", to: "posts#delete", as: :delete_post
 
   # Followships
   post "/:id/follow", to: "followships#follow", as: :follow
@@ -34,7 +39,12 @@ Rails.application.routes.draw do
   get ":username/followers", to: "followships#followers", as: :followers
   get ":username/followings", to: "followships#followings", as: :followings
 
+  # Users
+  get "users", to: "users#all"
+  get "/:username", to: "users#show", as: :user
+
   get "404", to: "errors#not_found", as: :not_found
+  get "403", to: "errors#permission_denied", as: :permission_denied
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

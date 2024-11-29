@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :reverse_followships, foreign_key: :following_id, class_name: "Followship", dependent: :destroy
   has_many :followers, through: :reverse_followships, source: :follower
 
+  has_many :posts
+
   belongs_to :country # , optional: true
   has_one_attached :avatar
 

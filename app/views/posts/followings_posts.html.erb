@@ -1,0 +1,13 @@
+<h1>Timeline</h1>
+
+<ul>
+  <% if @posts %>
+    <% @posts.each do |post| %>
+        <li>
+          <%= link_to show_post_path(post) do %>
+            <p><%= post.title %> - <%= post.user.username %></p>
+          <% end %>
+        </li>
+    <% end %>
+  <% end %>
+</ul>
