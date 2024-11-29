@@ -11,6 +11,8 @@
   padding: 5px
 }
 </style>
+<p> Followers Count: <%= current_user.followers.count %> </p>
+<p> Followings Count: <%= current_user.followings.count %> </p>
 <h3>Hello, <span style="font-style: italic;"><%= current_user.first_name %> <%= current_user.last_name %></span></h3>
 
 <% if @user.avatar.attached? %>

@@ -27,6 +27,13 @@ Rails.application.routes.draw do
   get "users", to: "users#all"
   get "/:username", to: "users#show", as: :user
 
+  # Followships
+  post "/:id/follow", to: "followships#follow", as: :follow
+  delete "/:id/unfollow", to: "followships#unfollow", as: :unfollow
+
+  get ":username/followers", to: "followships#followers", as: :followers
+  get ":username/followings", to: "followships#followings", as: :followings
+
   get "404", to: "errors#not_found", as: :not_found
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

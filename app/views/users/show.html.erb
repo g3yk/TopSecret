@@ -11,6 +11,14 @@
   padding: 5px
 }
 </style>
+
+<%= link_to followers_path(@user.username) do %>
+  <p> Followers Count: <%= @user.followers.count %> </p>
+<% end %>
+<%= link_to followings_path(@user.username) do %>
+  <p> Followings Count: <%= @user.followings.count %> </p>
+<% end %>
+
 <div style="margin: 2rem">
   <% if @user.avatar.attached? %>
     <%= image_tag @user.avatar, width: "50", class: "avatar" %>
@@ -18,6 +26,17 @@
     <%= image_tag 'default_profile.png' , width: "50", class: "avatar" %>
   <% end %>
 </div>
+
+<%= notice %>
+<% if current_user %>
+  <% if current_user.id != @user.id %>
+    <% if current_user.following?(@user) %>
+      <%= button_to 'Unfollow', unfollow_path(@user), method: :delete %>
+    <% else %>
+      <%= button_to 'Follow', follow_path(@user), method: :post %>
+    <% end %>
+  <% end %>
+<% end %>
 <ul style="font-size: 1.5rem">
   <li>Your account creation date: <span style="font-style: bold;"><%= @user.created_at.strftime("%Y-%m-%d") %></span></li>
   <br>
