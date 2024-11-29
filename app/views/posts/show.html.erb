@@ -1,0 +1,27 @@
+<style>
+.avatar {
+  object-fit: cover;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px
+}
+</style>
+<p style='color: green; font-weight: bold;'>
+  <%= notice %>
+</p>
+<% if current_user == @post.user %>
+  <%= button_to "Edit", edit_post_path(@post), method: :get %>
+  <%= button_to "Delete", delete_post_path(@post), method: :delete, data: { confirm: "Are you sure you want to delete this post?" } %>
+<% end %>
+  
+<h1><%= @user.username %></h1>
+
+<h1><%= @post.title %></h1>
+
+<p><%= @post.content %></p>
+
+<% if @post.avatar.attached? %>
+  <% @post.avatar.each do |attachment| %>
+    <%= image_tag attachment, width: "200", class: "avatar" %>
+  <% end %>
+<% end %>

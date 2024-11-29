@@ -50,3 +50,15 @@
   <li> Your Job Title: <span style="font-style: bold;"><%= @user.job_title %></span></li>
   <li>Your bio: <span style="font-style: bold;"><%= @user.bio %></span></li>
 </ul>
+
+<ul>
+  <% if @posts %>
+    <% @posts.each do |post| %>
+        <li>
+          <%= link_to show_post_path(post) do %>
+            <p><%= post.title %></p>
+          <% end %>
+        </li>
+    <% end %>
+  <% end %>
+</ul>

@@ -11,8 +11,12 @@
   padding: 5px
 }
 </style>
-<p> Followers Count: <%= current_user.followers.count %> </p>
-<p> Followings Count: <%= current_user.followings.count %> </p>
+<%= link_to followers_path(@user.username) do %>
+  <p> Followers Count: <%= @user.followers.count %> </p>
+<% end %>
+<%= link_to followings_path(@user.username) do %>
+  <p> Followings Count: <%= @user.followings.count %> </p>
+<% end %>
 <h3>Hello, <span style="font-style: italic;"><%= current_user.first_name %> <%= current_user.last_name %></span></h3>
 
 <% if @user.avatar.attached? %>
@@ -33,4 +37,16 @@
   <li> Your country: <span style="font-style: bold;"><%= current_user.country.name %></span></li>
   <li> Your Job Title: <span style="font-style: bold;"><%= current_user.job_title %></span></li>
   <li>Your bio: <span style="font-style: bold;"><%= current_user.bio %></span></li>
+</ul>
+
+<ul>
+  <% if current_user.posts %>
+    <% current_user.posts.each do |post| %>
+        <li>
+          <%= link_to show_post_path(post) do %>
+            <p><%= post.title %></p>
+          <% end %>
+        </li>
+    <% end %>
+  <% end %>
 </ul>

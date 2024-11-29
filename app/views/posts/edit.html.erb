@@ -1,0 +1,21 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'signup' %> <!-- Link to your specific CSS file -->
+<% end %>
+
+<h2>Upload Post</h2>
+<%= form_with model: @post, local: true, url: update_post_path, class: "signup-form", method: :put do |form| %>
+  <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title, required: true %>
+  </div>
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content, required: true %>
+  </div>
+  <div>
+    <%= form.label :avatar %>
+    <%= form.file_field :avatar, multiple: true, accept: 'image/png,image/jpeg,image/jpg' %>
+  </div>
+  <%= form.submit "Update Post" %>
+<% end %>

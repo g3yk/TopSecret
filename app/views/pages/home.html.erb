@@ -27,9 +27,13 @@
 </br></br>
 
 <% if user_signed_in? %>
+  <%= link_to "Timeline", timeline_path %>
+  </br></br>
   <%= link_to "My profile", account_path %>
   </br></br>
   <%= link_to "Edit my profile", edit_profile_path %>
+  </br></br>
+  <%= link_to "Upload Post", upload_post_path %>
   </br></br>
   <%= link_to "Change my password", change_password_path %>
   </br></br>

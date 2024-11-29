@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [
+    :account,
     :destroy,
     :change_password,
-    :destroy,
     :update_password,
+    :edit,
     :edit_profile
   ]
 
@@ -18,7 +19,10 @@ class UsersController < ApplicationController
       render "errors/not_found", locals: {
         error: "User `#{params[:username]}` not found"
       }
+      return
     end
+
+    @posts = @user.posts
   end
 
   def create
