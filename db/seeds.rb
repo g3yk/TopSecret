@@ -10,6 +10,7 @@
 
 User.destroy_all
 Country.destroy_all
+Followship.destroy_all
 
 Country.create(
   [
@@ -1350,6 +1351,39 @@ User.create([
     date_of_birth: "2024-11-28",
     bio: "",
     country_id: 98
+  }
+])
+
+Followship.create!([
+  {
+    follower_id: 2,
+    following_id: 1,
+    created_at: Time.current,
+    updated_at: Time.current
+  },
+  {
+    follower_id: 3,
+    following_id: 1,
+    created_at: Time.current,
+    updated_at: Time.current
+  },
+  {
+    follower_id: 4,
+    following_id: 1,
+    created_at: Time.current,
+    updated_at: Time.current
+  },
+  {
+    follower_id: 1,
+    following_id: 4,
+    created_at: Time.current,
+    updated_at: Time.current
+  },
+  {
+    follower_id: 1,
+    following_id: 5,
+    created_at: Time.current,
+    updated_at: Time.current
   }
 ])
 
