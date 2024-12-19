@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get "about" => "pages#about"
   get "contact" => "pages#contact"
-
+  get "index" => "pages#index"
   # Authorization
   get "sign_up", to: "users#sign_up", as: :sign_up
   post "sign_up", to: "users#create"
