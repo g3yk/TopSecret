@@ -6,10 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-<link rel="stylesheet" href="style.css">
+<%= stylesheet_link_tag 'style', media: 'all' %>
+
 
 <!------------------LIght BOx for Gallery-------------->
-<link rel="stylesheet" href="lightbox.min.css">
+<%= stylesheet_link_tag 'lightbox.min', media: 'all' %>
+
 <script type="text/javascript" src="lightbox-plus-jquery.min.js"></script>
 <!------------------LIght BOx for Gallery-------------->
 
@@ -25,7 +27,8 @@
     <!-------------------------------NAvigation Starts------------------>
 
     <nav class="navbar navbar-expand-md navbar-dark" style="background-color:#3097D1">
-            <a href="index.html" class="navbar-brand"><img src="img/brand-white.png" alt="logo" class="img-fluid" width="80px" height="100px"></a>
+            <a href="index.html" class="navbar-brand"><%= image_tag 'brand.png', alt: 'logo', class: 'img-fluid', width: '80', height: '100' %>
+</a>
     
             <button class="navbar-toggler" data-toggle="collapse" data-target="#responsive"><span class="navbar-toggler-icon"></span></button>
     
@@ -45,7 +48,8 @@
                     <input type="text" name="search" id="search" placeholder="Search" class="form-control form-control-sm">
                 </form>
                 <a href="notification.html" class="text-decoration-none" style="color:#CBE4F2;font-size:22px;"><i class="far fa-bell ml-3 d-none d-md-block"></i></a> 
-                <img src="img/avatar-dhg.png" alt="" class="rounded-circle ml-3 d-none d-md-block" width="32px" height="32px">
+                <%= image_tag 'avatar-dhg.png', alt: '', class: 'rounded-circle ml-3 d-none d-md-block', width: '32', height: '32' %>
+
     
     
     
@@ -91,7 +95,8 @@
                          <a href="#" class="text-decoration-none">
                             <li class="media hover-media">
                                
-                                    <img src="img/avatar-dhg.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                    <%= image_tag 'avatar-dhg.png', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
+
     
                                     <div class="media-body text-dark">
                                             <h6 class="media-header">Jchob Thunder and <strong> 1 others</strong></h6>
@@ -108,7 +113,8 @@
                         <a href="#" class="text-decoration-none">
                                 <li class="media hover-media">
                                    
-                                        <img src="img/avatar-fat.jpg" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                        <%= image_tag 'avatar-fat.jpg', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
+
         
                                         <div class="media-body text-dark">
                                                 <h6 class="media-header">Mark Otto and <strong> 3 others</strong></h6>
@@ -126,7 +132,8 @@
                             <a href="#" class="text-decoration-none">
                                 <li class="media hover-media">
                                    
-                                        <img src="img/avatar-mdo.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                        <%= image_tag 'avatar-mdo.png', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
+
         
                                         <div class="media-body text-dark">
                                                 <h6 class="media-header">Archer andu and <strong> 5 others</strong></h6>
@@ -143,7 +150,8 @@
                             <a href="#" class="text-decoration-none">
                                     <li class="media hover-media">
                                        
-                                            <img src="img/avatar-dhg.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                            <%= image_tag 'avatar-dhg.png', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
+
             
                                             <div class="media-body text-dark">
                                                     <h6 class="media-header">Jchob Thunder and <strong> 1 others</strong></h6>
@@ -160,7 +168,8 @@
                                 <a href="#" class="text-decoration-none">
                                         <li class="media hover-media">
                                            
-                                                <img src="img/avatar-fat.jpg" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                                <%= image_tag 'avatar-dhg.png', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
+
                 
                                                 <div class="media-body text-dark">
                                                         <h6 class="media-header">Mark Otto and <strong> 3 others</strong></h6>
@@ -178,7 +187,8 @@
                                     <a href="#" class="text-decoration-none">
                                         <li class="media hover-media">
                                            
-                                                <img src="img/avatar-mdo.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                                <%= image_tag 'avatar-mdo.png', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
+
                 
                                                 <div class="media-body text-dark">
                                                         <h6 class="media-header">Archer andu and <strong> 5 others</strong></h6>
@@ -194,7 +204,8 @@
                                     <a href="#" class="text-decoration-none">
                                             <li class="media hover-media">
                                                
-                                                    <img src="img/avatar-dhg.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                                    <%= image_tag 'avatar-dhg.png', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
+
                     
                                                     <div class="media-body text-dark">
                                                             <h6 class="media-header">Jchob Thunder and <strong> 1 others</strong></h6>
@@ -211,7 +222,8 @@
                                         <a href="#" class="text-decoration-none">
                                                 <li class="media hover-media">
                                                    
-                                                        <img src="img/avatar-fat.jpg" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                                        <%= image_tag 'avatar-fat.jpg', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
+
                         
                                                         <div class="media-body text-dark">
                                                                 <h6 class="media-header">Mark Otto and <strong> 3 others</strong></h6>
@@ -229,7 +241,8 @@
                                             <a href="#" class="text-decoration-none">
                                                 <li class="media hover-media">
                                                    
-                                                        <img src="img/avatar-mdo.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                                        <%= image_tag 'avatar-mdo.png', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
+
                         
                                                         <div class="media-body text-dark">
                                                                 <h6 class="media-header">Archer andu and <strong> 5 others</strong></h6>
@@ -284,7 +297,8 @@
 
         <div class="banner">
             <div class="banner-title d-flex flex-column justify-content-center align-items-center">
-                <img src="img/avatar-dhg.png" alt="img" class="rounded-circle" width="80px" height="80px">
+                <%= image_tag 'avatar-dhg.png', alt: 'img', class: 'rounded-circle', width: '80', height: '80' %>
+
                 <h3 class="text-light">Dave Gamache</h3>
                 <p class="text-light">I wish i was a little bit taller, wish i was a baller, wish i had a girl… also.</p>
 
@@ -316,73 +330,25 @@
                    
                 
            
-           <a href="portfolio/img1.jpg" data-lightbox="id"><img src="portfolio/img1.jpg" alt="" class="img-fluid" style="width:455px; height: 255px;"></a>     
+           <a href="<%= asset_path('banner.jpg') %>" data-lightbox="id">
+  <%= image_tag 'banner.jpg', alt: '', class: 'img-fluid', style: 'width:455px; height: 255px;' %>
+</a>
+     
           
 
 
             </div>
 
             <div class="item-2 ">
-                <a href="portfolio/img2.jpg"data-lightbox="id"> <img src="portfolio/img2.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a>   
+                <a href="<%= asset_path('banner.jpg') %>" data-lightbox="id">
+  <%= image_tag 'banner.jpg', alt: '', class: 'img-fluid', style: 'width:217px; height: 255px;' %>
+</a>
+   
 
                 </div>
-                <div class="item-3">
-                        <a href="portfolio/img3.jpg"data-lightbox="id"> <img src="portfolio/img3.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a> 
-                    </div>
-                    <div class="item-4">
-                            <a href="portfolio/img4.jpg"data-lightbox="id"> <img src="portfolio/img4.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a> 
-                    
+               
 
-
-                        </div>
-
-
-                        <div class="item-5">
-
-                                <a href="portfolio/img5.jpg"data-lightbox="id"><img src="portfolio/img5.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a> 
-          
-
-
-                        </div>
-            
-                        <div class="item-6">
-                                <a href="portfolio/img6.jpg"data-lightbox="id">   <img src="portfolio/img6.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a> 
-                            
-            
-                            </div>
-                            <div class="item-7">
-                                    <a href="portfolio/img7.jpg"data-lightbox="id"> <img src="portfolio/img7.jpg" alt="" class="img-fluid" style="width:455px; height: 255px;"></a> 
-                              
-                                </div>
-                                <div class="item-8">
-                                
-                                        <a href="portfolio/img8.jpg"data-lightbox="id">  <img src="portfolio/img8.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a> 
-            
-                                    </div>
-
-                                    <div class="item-9">
-                                            <a href="portfolio/img9.jpg"data-lightbox="id"><img src="portfolio/img9.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a> 
-          
-
-
-                                    </div>
-                        
-                                    <div class="item-10">
-                                            <a href="portfolio/img10.jpg"data-lightbox="id">    <img src="portfolio/img10.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a> 
-                                        
-                        
-                                        </div>
-                                        <div class="item-11">
-                                                <a href="portfolio/img11.jpg"data-lightbox="id">   <img src="portfolio/img11.jpg" alt="" class="img-fluid" style="width:455px; height: 255px;"></a> 
-                                          
-                                            </div>
-                                            <div class="item-12">
-                                                    <a href="portfolio/img12.jpg"data-lightbox="id">   <img src="portfolio/img12.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a> 
-                                            
-                        
-                        
-                                                </div>
-
+                       
                         
                                 
                                 
