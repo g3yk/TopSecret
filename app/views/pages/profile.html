@@ -6,10 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-<link rel="stylesheet" href="style.css">
+<%= stylesheet_link_tag "style", media: "all", rel: "stylesheet" %>
+
 
 <!------------------LIght BOx for Gallery-------------->
-<link rel="stylesheet" href="lightbox.min.css">
+<%= stylesheet_link_tag "lightbox.min", media: "all", rel: "stylesheet" %>
+
 <script type="text/javascript" src="lightbox-plus-jquery.min.js"></script>
 <!------------------LIght BOx for Gallery-------------->
 
@@ -25,18 +27,21 @@
     <!-------------------------------NAvigation Starts------------------>
 
     <nav class="navbar navbar-expand-md navbar-dark" style="background-color:#3097D1">
-            <a href="index.html" class="navbar-brand"><img src="img/brand-white.png" alt="logo" class="img-fluid" width="80px" height="100px"></a>
+            <a href="<%= root_path %>" class="navbar-brand">
+  <%= image_tag 'brand-white.png', alt: 'logo', class: 'img-fluid', width: '80px', height: '100px' %>
+</a>
+
     
             <button class="navbar-toggler" data-toggle="collapse" data-target="#responsive"><span class="navbar-toggler-icon"></span></button>
     
     
             <div class="collapse navbar-collapse" id="responsive">
                 <ul class="navbar-nav mr-auto text-capitalize">
-                    <li class="nav-item"><a href="index.html" class="nav-link active">home</a></li>
-                    <li class="nav-item"><a href="profile.html" class="nav-link">profile</a></li>
-                    <li class="nav-item"><a href="#modalview" data-toggle="modal" class="nav-link">messages</a></li>
-                    <li class="nav-item"><a href="notification.html" class="nav-link">docs</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link d-md-none">growl</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Ana Sayfa</a></li>
+                    <li class="nav-item"><a href="profile.html" class="nav-link">Profil</a></li>
+                    <li class="nav-item"><a href="#modalview" data-toggle="modal" class="nav-link">Mesajlar</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link">Giriş Yap</a></li>
+                    <li class="nav-item"><a href="register.html" class="nav-link">Kayıt Ol</a></li>
                     <li class="nav-item"><a href="#" class="nav-link d-md-none">logout</a></li>
     
                 </ul>
@@ -316,7 +321,10 @@
                    
                 
            
-           <a href="portfolio/img1.jpg" data-lightbox="id"><img src="portfolio/img1.jpg" alt="" class="img-fluid" style="width:455px; height: 255px;"></a>     
+          <a href="<%= asset_path('portfolio/img1.jpg') %>" data-lightbox="id">
+  <%= image_tag 'portfolio/img1.jpg', alt: '', class: 'img-fluid', style: 'width:455px; height: 255px;' %>
+</a>
+     
           
 
 
@@ -326,63 +334,21 @@
                 <a href="portfolio/img2.jpg"data-lightbox="id"> <img src="portfolio/img2.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a>   
 
                 </div>
-                <div class="item-3">
-                        <a href="portfolio/img3.jpg"data-lightbox="id"> <img src="portfolio/img3.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a> 
-                    </div>
-                    <div class="item-4">
-                            <a href="portfolio/img4.jpg"data-lightbox="id"> <img src="portfolio/img4.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a> 
+              
                     
 
 
                         </div>
 
 
-                        <div class="item-5">
-
-                                <a href="portfolio/img5.jpg"data-lightbox="id"><img src="portfolio/img5.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a> 
-          
-
-
-                        </div>
-            
-                        <div class="item-6">
-                                <a href="portfolio/img6.jpg"data-lightbox="id">   <img src="portfolio/img6.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a> 
-                            
-            
-                            </div>
+                       
                             <div class="item-7">
                                     <a href="portfolio/img7.jpg"data-lightbox="id"> <img src="portfolio/img7.jpg" alt="" class="img-fluid" style="width:455px; height: 255px;"></a> 
                               
                                 </div>
-                                <div class="item-8">
-                                
-                                        <a href="portfolio/img8.jpg"data-lightbox="id">  <img src="portfolio/img8.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a> 
-            
-                                    </div>
-
-                                    <div class="item-9">
-                                            <a href="portfolio/img9.jpg"data-lightbox="id"><img src="portfolio/img9.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a> 
-          
-
-
-                                    </div>
+                               
                         
-                                    <div class="item-10">
-                                            <a href="portfolio/img10.jpg"data-lightbox="id">    <img src="portfolio/img10.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a> 
-                                        
-                        
-                                        </div>
-                                        <div class="item-11">
-                                                <a href="portfolio/img11.jpg"data-lightbox="id">   <img src="portfolio/img11.jpg" alt="" class="img-fluid" style="width:455px; height: 255px;"></a> 
-                                          
-                                            </div>
-                                            <div class="item-12">
-                                                    <a href="portfolio/img12.jpg"data-lightbox="id">   <img src="portfolio/img12.jpg" alt="" class="img-fluid" style="width:217px; height: 255px;"></a> 
-                                            
-                        
-                        
-                                                </div>
-
+                                  
                         
                                 
                                 
