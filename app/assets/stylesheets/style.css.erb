@@ -81,18 +81,35 @@
     
 
 }
+.dropdown-menu-custom {
+  display: none;
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 200px;
+  text-align: left; /* Menü öğelerini sola hizalayalım */
+  transform: translateX(-50px); /* Menü öğelerini sola kaydır */
+}
 
-/*----------------------------------(This code Important for Modal sizing on large device)-----------------------------------*/
-.modal-dialog {
-    position: relative;
-    width: auto;
-    max-width: 600px;
-    margin: 0 auto;
-  }
+/* Menü elemanları */
+.dropdown-item {
+  padding: 10px 20px; /* Menü öğeleri için padding */
+  cursor: pointer;
+  text-align: left; /* İçeriği sola hizalayalım */
+}
 
-/*----------------------------------------------------------------------------------------------------------------------------*/
+/* Hover efekti */
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
 
-
+/* Avatar ve menü konteyneri */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
 
 
