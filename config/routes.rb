@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  root "pages#home"
+  root "pages#index"
 
   get "about" => "pages#about"
   get "contact" => "pages#contact"
   get "index" => "pages#index"
+  get "profile" => "pages#profile"
   # Authorization
   get "sign_up", to: "users#sign_up", as: :sign_up
   post "sign_up", to: "users#create"
