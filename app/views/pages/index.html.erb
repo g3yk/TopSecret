@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -40,8 +42,18 @@
             </ul>
 
          
-            <a href="notification.html" class="text-decoration-none" style="color:#CBE4F2;font-size:22px;"><i class="far fa-bell ml-3 d-none d-md-block"></i></a> 
-            <%= image_tag "avatar-dhg.png", alt: "", class: "rounded-circle ml-3 d-none d-md-block", width: "32px", height: "32px" %>
+          
+            <div class="dropdown">
+  <!-- Avatar Image (Tıklanabilir) -->
+  <%= image_tag "avatar-dhg.png", alt: "", class: "rounded-circle ml-3 d-none d-md-block", width: "50px", height: "50px", id: "profile-avatar" %>
+
+  <!-- Açılır Menü -->
+  <div id="dropdown-menu" class="dropdown-menu-custom">
+    <!-- Menü Öğeleri -->
+    <%= link_to "Profili Düzenle", "#", class: "dropdown-item" %>
+    <%= link_to "Çıkış Yap", "#", class: "dropdown-item" %>
+  </div>
+</div>
 
 
 
@@ -325,38 +337,6 @@
 
 
 
-                    <div class="card shadow-sm card-left3 mb-4">
-
-                        <div class="card-body">
-                            <h5 class="card-title">Fotoğraflar<small class="ml-2"><a href="#">Editle </a></small></h5>
-
-                            <div class="row">
-                                <div class="col-6 p-1">
-                                    <a href="img/left1.jpg" data-lightbox="id" ><img src="img/left1.jpg" alt="img" class="img-fluid my-2"></a>  
-                                    <a href="img/left2.jpg"data-lightbox="id"><img src="img/left2.jpg" alt="img" class="img-fluid my-2"></a>
-                                    <a href="img/left3.jpg"data-lightbox="id"><img src="img/left3.jpg" alt="img" class="img-fluid my-2"></a>
-
-                                </div>
-
-
-                                <div class="col-6 p-1">
-                                        <a href="img/left4.jpg"data-lightbox="id"><img src="img/left4.jpg" alt="img" class="img-fluid my-2"></a>
-                                        <a href="img/left5.jpg"data-lightbox="id"><img src="img/left5.jpg" alt="img" class="img-fluid my-2"></a>
-                                        <a href="img/left6.jpg"data-lightbox="id"><img src="img/left6.jpg" alt="img" class="img-fluid my-2"></a>
-    
-                                    </div>
-
-                            </div>
-
-                        </div>
-
-
-
-
-
-
-
-                        </div>
 
 
 
@@ -652,84 +632,14 @@
         </div>
 
 
-        <div class="card shadow-sm mb-4">
-
-            <div class="card-body">
-
-                    <h6 class="card-title ">Likes <a href="#" class="ml-1"><small>.View All</small> </a> </h6>
-                    <div class="row no-gutters d-none d-lg-flex">
-                        <div class="col-6 p-1">
-                                <%= image_tag "avatar-dhg.png", alt: "img", width: "80px", height: "80px", class: "rounded-circle mr-2" %>
-
-
-                                <%= image_tag "avatar-fat.jpg", alt: "img", width: "80px", height: "80px", class: "rounded-circle" %>
-
-
-
-
-                        </div>
-                        <div class="col-6 p-1 text-left">
-                            <h6>Jacob Thornton @fat</h6>
-                            <a href="#" class="btn btn-outline-info btn-sm mb-3"><i class="fas fa-user-friends"></i>Follow </a>
-
-                            <h6>Mark otto</h6>
-                            <a href="#" class="btn btn-outline-info  btn-sm"><i class="fas fa-user-friends"></i>Follow </a>
-
-                        </div>
-
-                    </div>
-
-            </div>
-
-            <div class="card-footer">
-
-                <p class="lead" style="font-size:18px;">Burak bu nerdleri gerçekten seviyor fakat kimse nedenini bilmiyor.</p>
-            </div>
+       
+           
             
 
 
         </div>
 
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <p>&copy; 2018 Bootstrap
-
-
-
-                        <a href="#">About</a>
-                        <a href="#">Help</a>
-                        <a href="#">Terms</a>
-                        <a href="#">Privacy</a>
-                        <a href="#">Cookies</a>
-                        <a href="#">Ads </a>
-                        <a href="#">Info</a>
-                        <a href="#">Brand</a>
-                        <a href="#">Blog</a>
-                        <a href="#">Status</a>
-                        <a href="#">Apps</a>
-                        <a href="#">Jobs</a>
-                        <a href="#">Advertise</a>
-                    
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                </p>
-            </div>
-
-        </div>
+       
 
 
 
@@ -803,7 +713,24 @@
 
 
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const profileAvatar = document.getElementById("profile-avatar");
+      const dropdownMenu = document.getElementById("dropdown-menu");
 
+      // Avatar'a tıklama ile menüyü göster/gizle
+      profileAvatar.addEventListener("click", function (event) {
+        event.stopPropagation(); // Menü kapanmasın diye tıklamayı engelle
+        dropdownMenu.style.display =
+          dropdownMenu.style.display === "block" ? "none" : "block"; // Menü göster/gizle
+      });
+
+      // Sayfanın herhangi bir yerine tıklanırsa menüyü kapat
+      document.addEventListener("click", function () {
+        dropdownMenu.style.display = "none"; // Menü kapanacak
+      });
+    });
+  </script>
 
 
 
