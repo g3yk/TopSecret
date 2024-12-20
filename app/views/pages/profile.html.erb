@@ -35,21 +35,31 @@
     
             <div class="collapse navbar-collapse" id="responsive">
                 <ul class="navbar-nav mr-auto text-capitalize">
-                    <li class="nav-item"><a href="index.html" class="nav-link active">home</a></li>
-                    <li class="nav-item"><a href="profile.html" class="nav-link">profile</a></li>
-                    <li class="nav-item"><a href="#modalview" data-toggle="modal" class="nav-link">messages</a></li>
-                    <li class="nav-item"><a href="notification.html" class="nav-link">docs</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link d-md-none">growl</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link d-md-none">logout</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link active">Ana Sayfa</a></li>
+                    <li class="nav-item"><a href="profile.html" class="nav-link">Profil</a></li>
+                    <li class="nav-item"><a href="#modalview" data-toggle="modal" class="nav-link">Mesajlar</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link">Giriş Yap</a></li>
+                    <li class="nav-item"><a href="registration.html" class="nav-link d-md-none">Kayıt Ol</a></li>
+          
     
                 </ul>
     
-                <form action="" class="form-inline ml-auto d-none d-md-block">
-                    <input type="text" name="search" id="search" placeholder="Search" class="form-control form-control-sm">
-                </form>
-                <a href="notification.html" class="text-decoration-none" style="color:#CBE4F2;font-size:22px;"><i class="far fa-bell ml-3 d-none d-md-block"></i></a> 
-                <%= image_tag 'avatar-dhg.png', alt: '', class: 'rounded-circle ml-3 d-none d-md-block', width: '32', height: '32' %>
+                
+                
+                      
+                            <div class="dropdown">
+  <!-- Avatar Image (Tıklanabilir) -->
+  <%= image_tag "avatar-dhg.png", alt: "", class: "rounded-circle ml-3 d-none d-md-block", width: "50px", height: "50px", id: "profile-avatar" %>
 
+  <!-- Açılır Menü -->
+  <div id="dropdown-menu" class="dropdown-menu-custom">
+    <!-- Menü Öğeleri -->
+    <%= link_to "Profili Düzenle", "#", class: "dropdown-item" %>
+    <%= link_to "Çıkış Yap", "#", class: "dropdown-item" %>
+  </div>
+</div>
+
+ 
     
     
     
@@ -308,8 +318,7 @@
             <div class="banner-end d-flex justify-content-center align-items-end">
                 <ul class="nav text-light">
                     <li class="nav-item nav-link active">Photos</li>
-                    <li class="nav-item nav-link">Others</li>
-                    <li class="nav-item nav-link">Anothers</li>
+                    
 
                 </ul>
 
@@ -570,6 +579,25 @@
 
 
 
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const profileAvatar = document.getElementById("profile-avatar");
+      const dropdownMenu = document.getElementById("dropdown-menu");
+
+      // Avatar'a tıklama ile menüyü göster/gizle
+      profileAvatar.addEventListener("click", function (event) {
+        event.stopPropagation(); // Menü kapanmasın diye tıklamayı engelle
+        dropdownMenu.style.display =
+          dropdownMenu.style.display === "block" ? "none" : "block"; // Menü göster/gizle
+      });
+
+      // Sayfanın herhangi bir yerine tıklanırsa menüyü kapat
+      document.addEventListener("click", function () {
+        dropdownMenu.style.display = "none"; // Menü kapanacak
+      });
+    });
+  </script>
 
 
 
