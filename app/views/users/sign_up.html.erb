@@ -5,37 +5,40 @@
 <h2>Sign Up</h2>
 <%= form_with model: @user, url: sign_up_path, class: "signup-form" do |form| %>
   <%= render partial: "shared/form_errors", locals: { object: form.object } %>
-  <div>
-    <%= form.label :username %>
-    <%= form.text_field :username, required: true %>
-  </div>
-  <div>
-    <%= form.label :email %>
-    <%= form.email_field :email, required: true %>
-  </div>
-  <div>
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, required: true %>
-  </div>
-  <div>
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, required: true %>
-  </div>
-  <div>
-    <%= form.label :date_of_birth %>
-    <%= form.date_field :date_of_birth, required: true %>
-  </div>
-  <div>
-    <%= form.label :country_id %>
-    <%= form.collection_select(:country_id, Country.all, :id, :name, prompt: 'Select a Country', required: true) %>
-  </div>
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password, required: true %>
-  </div>
-  <div>
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, required: true %>
-  </div>
-  <%= form.submit "Sign Up" %>
+  <div class="u-form-group u-form-name">
+          <%= form.label :name, "Username", class: "u-label" %>
+          <%= form.text_field :name, placeholder: "Kullanıcı Adı Giriniz", class: "u-input u-input-rectangle", required: true %>
+        </div>
+  <div class="u-form-email u-form-group">
+          <%= form.label :email, "Email", class: "u-label" %>
+          <%= form.email_field :email, placeholder: "Geçerli bir e-posta adresi girin", class: "u-input u-input-rectangle", required: true %>
+        </div>
+  <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-4">
+        <%= form.label :first_name, "Adı", class: "u-label" %>
+        <%= form.text_field :first_name, placeholder: "Adınızı Girin", class: "u-input u-input-rectangle", required: true %>
+      </div>
+  <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-5">
+      <%= form.label :last_name, "Soyadı", class: "u-label" %>
+      <%= form.text_field :last_name, placeholder: "Soyadınızı Girin", class: "u-input u-input-rectangle", required: true %>
+    </div>
+  <div class="u-form-date u-form-group u-form-group-6">
+          <%= form.label :dob, "Doğum Tarihiniz", class: "u-label" %>
+          <%= form.date_field :dob, placeholder: "AY/GÜN/YIL", class: "u-input u-input-rectangle", required: true %>
+        </div>
+  <div class="u-form-country u-form-group u-form-group-3">
+          <%= form.label :country, "Ülke", class: "u-label" %>
+          <%= form.select :country, [["Türkiye", "Türkiye"]], {}, class: "u-input u-input-rectangle" %>
+        </div>
+  <div class="u-form-email u-form-group u-form-group-7">
+          <%= form.label :password, "Şifre Giriniz", class: "u-label" %>
+          <%= form.password_field :password, placeholder: "Şifre", class: "u-input u-input-rectangle", required: true %>
+        </div>
+  <div class="u-form-email u-form-group u-form-group-8">
+          <%= form.label :password_confirmation, "Şifrenizi Doğrulayın", class: "u-label" %>
+          <%= form.password_field :password_confirmation, placeholder: "Şifre Doğrulayın", class: "u-input u-input-rectangle", required: true %>
+        </div>
+  <div class="u-align-center u-form-group u-form-submit">
+        <%= form.submit "Kayıt Ol", class: "u-btn u-btn-submit u-button-style" %>
+        </div>
 <% end %>
+
