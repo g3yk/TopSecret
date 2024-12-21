@@ -33,9 +33,13 @@
                       <%= form.label :dob, "Doğum Tarihiniz", class: "u-label" %>
                       <%= form.date_field :dob, placeholder: "AY/GÜN/YIL", class: "u-input u-input-rectangle", required: true %>
                     </div>
-              <div class="u-form-country u-form-group u-form-group-3">
-                      <%= form.label :country, "Ülke", class: "u-label" %>
-                      <%= form.select :country, [["Türkiye", "Türkiye"]], {}, class: "u-input u-input-rectangle" %>
+                    <div class="u-form-country u-form-group u-form-group-3">
+                    <label for="country-32a8" class="u-label">Ülke</label>
+                    <div class="u-form-select-wrapper">
+                      <select id="country-32a8" name="country" class="u-input u-input-rectangle">
+                        <option value="United States">United States</option>
+                      </select>
+                      <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="fill:currentColor;" xml:space="preserve"><polygon class="st0" points="8,12 2,4 14,4 "></polygon></svg>
                     </div>
               <div class="u-form-email u-form-group u-form-group-7">
                       <%= form.label :password, "Şifre Giriniz", class: "u-label" %>
