@@ -1,3 +1,47 @@
 <header>
-    <h1>Welcome to My App</h1>
+<nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color:#3097D1">
+    <a href="index.html" class="navbar-brand"><%= image_tag "brand.png", alt: "logo", class: "img-fluid", width: "80px", height: "100px" %></a>
+
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#responsive"><span class="navbar-toggler-icon"></span></button>
+
+
+    <div class="collapse navbar-collapse" id="responsive">
+        <ul class="navbar-nav mr-auto text-capitalize">
+            <li class="nav-item"><a href="index.html" class="nav-link ">Ana Sayfa</a></li>
+            <li class="nav-item"><a href="profile.html" class="nav-link">Profil</a></li>
+            <li class="nav-item"><a href="#modalview" class="nav-link" data-toggle="modal">Mesajlar</a></li>
+            <li class="nav-item"><a href="login.html" class="nav-link">Giriş Yap</a></li>
+            <li class="nav-item"><a href="register.html" class="nav-link">Kayıt Ol</a></li>
+        
+ 
+            <li class="nav-item"><a href="#" class="nav-link d-md-none">Çıkış</a></li>
+
+        </ul>
+
+     
+      
+        <div class="dropdown">
+<!-- Avatar Image (Tıklanabilir) -->
+<%= image_tag "avatar-dhg.png", alt: "", class: "rounded-circle ml-3 d-none d-md-block", width: "50px", height: "50px", id: "profile-avatar" %>
+
+<!-- Açılır Menü -->
+<div id="dropdown-menu" class="dropdown-menu-custom">
+<!-- Menü Öğeleri -->
+<%= link_to "Profili Düzenle", "#", class: "dropdown-item" %>
+<%= link_to "Çıkış Yap", "#", class: "dropdown-item" %>
+</div>
+</div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+</nav>
 </header>
