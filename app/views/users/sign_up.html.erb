@@ -1,44 +1,59 @@
 <% content_for :head do %>
-  <%= stylesheet_link_tag 'signup' %> <!-- Link to your specific CSS file -->
+  <%= stylesheet_link_tag 'nicepage', media: 'screen' %>
+  <%= stylesheet_link_tag 'Sayfa-1', media: 'screen' %>
+  <%= javascript_include_tag 'jquery', defer: true %>
+  <%= javascript_include_tag 'nicepage', defer: true %>
 <% end %>
-
-<h2>Sign Up</h2>
-<%= form_with model: @user, url: sign_up_path, class: "signup-form" do |form| %>
-  <%= render partial: "shared/form_errors", locals: { object: form.object } %>
-  <div class="u-form-group u-form-name">
-          <%= form.label :name, "Username", class: "u-label" %>
-          <%= form.text_field :name, placeholder: "Kullanıcı Adı Giriniz", class: "u-input u-input-rectangle", required: true %>
+<body>
+<section class="u-clearfix u-section-1" id="sec-d55e">
+   <div class="u-clearfix u-sheet u-sheet-1">
+    <%= form_with model: @user, url: sign_up_path, class: "signup-form" do |form| %>
+      <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+      <div class="u-form-group u-form-name">
+              <%= form.label :name, "Username", class: "u-label" %>
+              <%= form.text_field :name, placeholder: "Kullanıcı Adı Giriniz", class: "u-input u-input-rectangle", required: true %>
+            </div>
+      <div class="u-form-email u-form-group">
+              <%= form.label :email, "Email", class: "u-label" %>
+              <%= form.email_field :email, placeholder: "Geçerli bir e-posta adresi girin", class: "u-input u-input-rectangle", required: true %>
+            </div>
+      <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-4">
+            <%= form.label :first_name, "Adı", class: "u-label" %>
+            <%= form.text_field :first_name, placeholder: "Adınızı Girin", class: "u-input u-input-rectangle", required: true %>
+          </div>
+      <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-5">
+          <%= form.label :last_name, "Soyadı", class: "u-label" %>
+          <%= form.text_field :last_name, placeholder: "Soyadınızı Girin", class: "u-input u-input-rectangle", required: true %>
         </div>
-  <div class="u-form-email u-form-group">
-          <%= form.label :email, "Email", class: "u-label" %>
-          <%= form.email_field :email, placeholder: "Geçerli bir e-posta adresi girin", class: "u-input u-input-rectangle", required: true %>
-        </div>
-  <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-4">
-        <%= form.label :first_name, "Adı", class: "u-label" %>
-        <%= form.text_field :first_name, placeholder: "Adınızı Girin", class: "u-input u-input-rectangle", required: true %>
-      </div>
-  <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-5">
-      <%= form.label :last_name, "Soyadı", class: "u-label" %>
-      <%= form.text_field :last_name, placeholder: "Soyadınızı Girin", class: "u-input u-input-rectangle", required: true %>
+      <div class="u-form-date u-form-group u-form-group-6">
+              <%= form.label :dob, "Doğum Tarihiniz", class: "u-label" %>
+              <%= form.date_field :dob, placeholder: "AY/GÜN/YIL", class: "u-input u-input-rectangle", required: true %>
+            </div>
+      <div class="u-form-country u-form-group u-form-group-3">
+              <%= form.label :country, "Ülke", class: "u-label" %>
+              <%= form.select :country, [["Türkiye", "Türkiye"]], {}, class: "u-input u-input-rectangle" %>
+            </div>
+      <div class="u-form-email u-form-group u-form-group-7">
+              <%= form.label :password, "Şifre Giriniz", class: "u-label" %>
+              <%= form.password_field :password, placeholder: "Şifre", class: "u-input u-input-rectangle", required: true %>
+            </div>
+      <div class="u-form-email u-form-group u-form-group-8">
+              <%= form.label :password_confirmation, "Şifrenizi Doğrulayın", class: "u-label" %>
+              <%= form.password_field :password_confirmation, placeholder: "Şifre Doğrulayın", class: "u-input u-input-rectangle", required: true %>
+            </div>
+      <div class="u-align-center u-form-group u-form-submit">
+            <%= form.submit "Kayıt Ol", class: "u-btn u-btn-submit u-button-style" %>
+            </div>
+      <% end %>
+      <%= image_tag 'foto-register.jpg', class: 'u-image u-image-default u-image-1', alt: '', data: { image_width: '2560', image_height: '1600' } %>
     </div>
-  <div class="u-form-date u-form-group u-form-group-6">
-          <%= form.label :dob, "Doğum Tarihiniz", class: "u-label" %>
-          <%= form.date_field :dob, placeholder: "AY/GÜN/YIL", class: "u-input u-input-rectangle", required: true %>
-        </div>
-  <div class="u-form-country u-form-group u-form-group-3">
-          <%= form.label :country, "Ülke", class: "u-label" %>
-          <%= form.select :country, [["Türkiye", "Türkiye"]], {}, class: "u-input u-input-rectangle" %>
-        </div>
-  <div class="u-form-email u-form-group u-form-group-7">
-          <%= form.label :password, "Şifre Giriniz", class: "u-label" %>
-          <%= form.password_field :password, placeholder: "Şifre", class: "u-input u-input-rectangle", required: true %>
-        </div>
-  <div class="u-form-email u-form-group u-form-group-8">
-          <%= form.label :password_confirmation, "Şifrenizi Doğrulayın", class: "u-label" %>
-          <%= form.password_field :password_confirmation, placeholder: "Şifre Doğrulayın", class: "u-input u-input-rectangle", required: true %>
-        </div>
-  <div class="u-align-center u-form-group u-form-submit">
-        <%= form.submit "Kayıt Ol", class: "u-btn u-btn-submit u-button-style" %>
-        </div>
-<% end %>
-
+</section>
+  <section class="u-backlink u-clearfix u-grey-80">
+    <p class="u-text">
+      <span>This site was created with the </span>
+      <a class="u-link" href="https://nicepage.com/" target="_blank" rel="nofollow">
+        <span>Nicepage</span>
+      </a>
+    </p>
+  </section>
+</body>
