@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-<link rel="stylesheet" href="style.css">
+<%= stylesheet_link_tag "style", media: "all", rel: "stylesheet" %>
+
 
 <!------------------LIght BOx for Gallery-------------->
 <link rel="stylesheet" href="lightbox.min.css">
@@ -17,42 +20,7 @@
 <body>
 
 
-    <!-------------------------------NAvigation Starts------------------>
-
-    <nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color:#3097D1">
-        <a href="index.html" class="navbar-brand"><img src="img/brand-white.png" alt="logo" class="img-fluid" width="80px" height="100px"></a>
-
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#responsive"><span class="navbar-toggler-icon"></span></button>
-
-
-        <div class="collapse navbar-collapse" id="responsive">
-            <ul class="navbar-nav mr-auto text-capitalize">
-                <li class="nav-item"><a href="index.html" class="nav-link active">Ana Sayfa</a></li>
-                <li class="nav-item"><a href="profile.html" class="nav-link">Profil</a></li>
-                <li class="nav-item"><a href="#modalview" class="nav-link" data-toggle="modal">Mesajlar</a></li>
-                <li class="nav-item"><a href="notification.html" class="nav-link">Dokümanlar</a></li>
-     
-                <li class="nav-item"><a href="#" class="nav-link d-md-none">Çıkış</a></li>
-
-            </ul>
-
-         
-            <a href="notification.html" class="text-decoration-none" style="color:#CBE4F2;font-size:22px;"><i class="far fa-bell ml-3 d-none d-md-block"></i></a> 
-            <img src="img/burak-kurt.jpeg" alt="" class="rounded-circle ml-3 d-none d-md-block" width="32px" height="32px">
-
-
-
-
-
-        </div>
-
-
-
-
-
-    </nav>
-
-    <!---------------------------------------------Ends navigation------------------------------>
+    
 
     <!---------------------------MOdal Section  satrts------------------->
 
@@ -78,7 +46,8 @@
                      <a href="#" class="text-decoration-none">
                         <li class="media hover-media">
                            
-                                <img src="img/burak-kurt.jpeg" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                <%= image_tag "avatar-dhg.png", alt: "img", width: "60px", height: "60px", class: "rounded-circle mr-3" %>
+
 
                                 <div class="media-body text-dark">
                                         <h6 class="media-header">Jchob Thunder and <strong> 1 others</strong></h6>
@@ -95,7 +64,8 @@
                     <a href="#" class="text-decoration-none">
                             <li class="media hover-media">
                                
-                                    <img src="img/avatar-fat.jpg" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                    <%= image_tag "avatar-fat.jpg", alt: "img", width: "60px", height: "60px", class: "rounded-circle mr-3" %>
+
     
                                     <div class="media-body text-dark">
                                             <h6 class="media-header">Mark Otto and <strong> 3 others</strong></h6>
@@ -113,7 +83,8 @@
                         <a href="#" class="text-decoration-none">
                             <li class="media hover-media">
                                
-                                    <img src="img/avatar-mdo.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                   <%= image_tag "avatar-mdo.png", alt: "img", width: "45px", height: "45px", class: "rounded-circle mr-2" %>
+
     
                                     <div class="media-body text-dark">
                                             <h6 class="media-header">Archer andu and <strong> 5 others</strong></h6>
@@ -130,7 +101,8 @@
                         <a href="#" class="text-decoration-none">
                                 <li class="media hover-media">
                                    
-                                        <img src="img/burak-kurt.jpeg" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                        <%= image_tag "avatar-dhg.png", alt: "img", width: "60px", height: "60px", class: "rounded-circle mr-3" %>
+
         
                                         <div class="media-body text-dark">
                                                 <h6 class="media-header">Jchob Thunder and <strong> 1 others</strong></h6>
@@ -147,7 +119,8 @@
                             <a href="#" class="text-decoration-none">
                                     <li class="media hover-media">
                                        
-                                            <img src="img/avatar-fat.jpg" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                            <%= image_tag "avatar-fat.jpg", alt: "img", width: "60px", height: "60px", class: "rounded-circle mr-3" %>
+
             
                                             <div class="media-body text-dark">
                                                     <h6 class="media-header">Mark Otto and <strong> 3 others</strong></h6>
@@ -165,7 +138,8 @@
                                 <a href="#" class="text-decoration-none">
                                     <li class="media hover-media">
                                        
-                                            <img src="img/avatar-mdo.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                            <%= image_tag "avatar-mdo.png", alt: "img", width: "60px", height: "60px", class: "rounded-circle mr-3" %>
+
             
                                             <div class="media-body text-dark">
                                                     <h6 class="media-header">Archer andu and <strong> 5 others</strong></h6>
@@ -181,7 +155,9 @@
                                 <a href="#" class="text-decoration-none">
                                         <li class="media hover-media">
                                            
-                                                <img src="img/burak-kurt.jpeg" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                                <%= image_tag "avatar-dhg.png", alt: "img", width: "45px", height: "45px", class: "rounded-circle mr-2" %>
+
+
                 
                                                 <div class="media-body text-dark">
                                                         <h6 class="media-header">Jchob Thunder and <strong> 1 others</strong></h6>
@@ -198,7 +174,8 @@
                                     <a href="#" class="text-decoration-none">
                                             <li class="media hover-media">
                                                
-                                                    <img src="img/avatar-fat.jpg" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                                    <%= image_tag "avatar-fat.jpg", alt: "img", width: "60px", height: "60px", class: "rounded-circle mr-3" %>
+
                     
                                                     <div class="media-body text-dark">
                                                             <h6 class="media-header">Mark Otto and <strong> 3 others</strong></h6>
@@ -216,7 +193,8 @@
                                         <a href="#" class="text-decoration-none">
                                             <li class="media hover-media">
                                                
-                                                    <img src="img/avatar-mdo.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
+                                                    <%= image_tag "avatar-mdo.png", alt: "img", width: "60px", height: "60px", class: "rounded-circle mr-3" %>
+
                     
                                                     <div class="media-body text-dark">
                                                             <h6 class="media-header">Archer andu and <strong> 5 others</strong></h6>
@@ -264,9 +242,11 @@
 
 
                     <div class="card card-left1 mb-4" >
-                        <img src="img/photo-1455448972184-de647495d428.jpg" alt="" class="card-img-top img-fluid">
+                        <%= image_tag "photo-1455448972184-de647495d428.jpg", alt: "", class: "card-img-top img-fluid" %>
+
                         <div class="card-body text-center ">
-                            <img src="img/burak-kurt.jpeg" alt="img" width="120px" height="120px" class="rounded-circle mt-n5">
+                            <%= image_tag "avatar-dhg.png", alt: "img", width: "120px", height: "120px", class: "rounded-circle mt-n5" %>
+
                             <h5 class="card-title">Burak Kurt</h5>
                             <p class="card-text text-justify mb-2">Kendi halinde bir gezgin...</p>
                             <ul class="list-unstyled nav justify-content-center">
@@ -309,38 +289,6 @@
 
 
 
-                    <div class="card shadow-sm card-left3 mb-4">
-
-                        <div class="card-body">
-                            <h5 class="card-title">Fotoğraflar<small class="ml-2"><a href="#">Editle </a></small></h5>
-
-                            <div class="row">
-                                <div class="col-6 p-1">
-                                    <a href="img/left1.jpg" data-lightbox="id" ><img src="img/left1.jpg" alt="img" class="img-fluid my-2"></a>  
-                                    <a href="img/left2.jpg"data-lightbox="id"><img src="img/left2.jpg" alt="img" class="img-fluid my-2"></a>
-                                    <a href="img/left3.jpg"data-lightbox="id"><img src="img/left3.jpg" alt="img" class="img-fluid my-2"></a>
-
-                                </div>
-
-
-                                <div class="col-6 p-1">
-                                        <a href="img/left4.jpg"data-lightbox="id"><img src="img/left4.jpg" alt="img" class="img-fluid my-2"></a>
-                                        <a href="img/left5.jpg"data-lightbox="id"><img src="img/left5.jpg" alt="img" class="img-fluid my-2"></a>
-                                        <a href="img/left6.jpg"data-lightbox="id"><img src="img/left6.jpg" alt="img" class="img-fluid my-2"></a>
-    
-                                    </div>
-
-                            </div>
-
-                        </div>
-
-
-
-
-
-
-
-                        </div>
 
 
 
@@ -423,7 +371,8 @@
    <div class="card-body">
 
     <div class="media">
-        <img src="img/burak-kurt.jpeg" alt="img" width="55px" height="55px" class="rounded-circle mr-3">
+        <%= image_tag "avatar-dhg.png", alt: "img", width: "55px", height: "55px", class: "rounded-circle mr-3" %>
+
 
         <div class="media-body">
             <h5>Burak Kurt</h5>
@@ -434,16 +383,22 @@
             <div class="row no-gutters mb-3">
                 <div class="col-6 p-1 text-center">
 
-                        <img src="img/adventure-alps-clouds-2259810.jpg" alt="" class="img-fluid mb-2">
-                        <img src="img/aerial-view-architectural-design-buildings-2228123.jpg" alt="" class="img-fluid">
+                        <%= image_tag "adventure-alps-clouds-2259810.jpg", alt: "", class: "img-fluid mb-2" %>
+
+                        <%= image_tag "aerial-view-architectural-design-buildings-2228123.jpg", alt: "", class: "img-fluid" %>
+
             
 
                 </div>
 
                 <div class="col-6 p-1 text-center">
 
-                        <img src="img/celebration-colored-smoke-dark-2297472.jpg" alt="" class="img-fluid mb-2">
-                        <img src="img/bodybuilding-exercise-fitness-2294361.jpg" alt=""class="img-fluid">
+                        <%= image_tag "celebration-colored-smoke-dark-2297472.jpg", alt: "", class: "img-fluid mb-2" %>
+                        <%= image_tag "bodybuilding-exercise-fitness-2294361.jpg", alt: "", class: "img-fluid" %>
+
+
+
+
             
 
                 </div>
@@ -460,7 +415,8 @@
 
         
             <div class="media mb-3">
-                    <img src="img/burak-kurt.jpeg" alt="img" width="45px" height="45px" class="rounded-circle mr-2">
+                    <%= image_tag "avatar-dhg.png", alt: "img", width: "45px", height: "45px", class: "rounded-circle mr-2" %>
+
                     <div class="media-body">
                             <p class="card-text text-justify">Burak Kurt: Herkese verdiğini emeklerden dolayı çok teşekkür ediyorum. Nice beraber senelere...</p>
 
@@ -471,7 +427,7 @@
 
             
             <div class="media">
-                    <img src="img/avatar-mdo.png" alt="img" width="45px" height="45px" class="rounded-circle mr-2">
+                    
                     <div class="media-body">
                             <p class="card-text text-justify">Mark Otto: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 
@@ -506,7 +462,8 @@
 <div class="card-body">
 
     <div class="media">
-            <img src="img/avatar-fat.jpg" alt="img" width="55px" height="55px" class="rounded-circle mr-3">
+            <%= image_tag "avatar-fat.jpg", alt: "img", width: "55px", height: "55px", class: "rounded-circle mr-3" %>
+
 
         <div class="media-body">
                 <h5>Jacob Thornton</h5>
@@ -532,7 +489,9 @@
 
     <div class="media">
 
-            <img src="img/avatar-mdo.png" alt="img" width="55px" height="55px" class="rounded-circle mr-3">
+            <%= image_tag "avatar-mdo.png", alt: "img", width: "60px", height: "60px", class: "rounded-circle mr-3" %>
+
+
             <div class="media-body">
                 <h5>Mark Otto</h5>
                 <p class="text-justify">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
@@ -625,81 +584,14 @@
         </div>
 
 
-        <div class="card shadow-sm mb-4">
-
-            <div class="card-body">
-
-                    <h6 class="card-title ">Likes <a href="#" class="ml-1"><small>.View All</small> </a> </h6>
-                    <div class="row no-gutters d-none d-lg-flex">
-                        <div class="col-6 p-1">
-                                <img src="img/burak-kurt.jpeg" alt="img" width="80px" height="80px" class="rounded-circle mb-4">
-                                <img src="img/avatar-fat.jpg" alt="img" width="80px" height="80px" class="rounded-circle">
-
-
-
-                        </div>
-                        <div class="col-6 p-1 text-left">
-                            <h6>Jacob Thornton @fat</h6>
-                            <a href="#" class="btn btn-outline-info btn-sm mb-3"><i class="fas fa-user-friends"></i>Follow </a>
-
-                            <h6>Mark otto</h6>
-                            <a href="#" class="btn btn-outline-info  btn-sm"><i class="fas fa-user-friends"></i>Follow </a>
-
-                        </div>
-
-                    </div>
-
-            </div>
-
-            <div class="card-footer">
-
-                <p class="lead" style="font-size:18px;">Burak bu nerdleri gerçekten seviyor fakat kimse nedenini bilmiyor.</p>
-            </div>
+       
+           
             
 
 
         </div>
 
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <p>&copy; 2018 Bootstrap
-
-
-
-                        <a href="#">About</a>
-                        <a href="#">Help</a>
-                        <a href="#">Terms</a>
-                        <a href="#">Privacy</a>
-                        <a href="#">Cookies</a>
-                        <a href="#">Ads </a>
-                        <a href="#">Info</a>
-                        <a href="#">Brand</a>
-                        <a href="#">Blog</a>
-                        <a href="#">Status</a>
-                        <a href="#">Apps</a>
-                        <a href="#">Jobs</a>
-                        <a href="#">Advertise</a>
-                    
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                </p>
-            </div>
-
-        </div>
+       
 
 
 
@@ -773,7 +665,24 @@
 
 
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const profileAvatar = document.getElementById("profile-avatar");
+      const dropdownMenu = document.getElementById("dropdown-menu");
 
+      // Avatar'a tıklama ile menüyü göster/gizle
+      profileAvatar.addEventListener("click", function (event) {
+        event.stopPropagation(); // Menü kapanmasın diye tıklamayı engelle
+        dropdownMenu.style.display =
+          dropdownMenu.style.display === "block" ? "none" : "block"; // Menü göster/gizle
+      });
+
+      // Sayfanın herhangi bir yerine tıklanırsa menüyü kapat
+      document.addEventListener("click", function () {
+        dropdownMenu.style.display = "none"; // Menü kapanacak
+      });
+    });
+  </script>
 
 
 
