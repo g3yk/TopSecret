@@ -12,8 +12,6 @@
             <li class="nav-item"><a href="#modalview" class="nav-link" data-toggle="modal">Mesajlar</a></li>
             <li class="nav-item"><a href="login.html" class="nav-link">Giriş Yap</a></li>
             <li class="nav-item"><a href="sign_up" class="nav-link">Kayıt Ol</a></li>
-        
- 
             <li class="nav-item"><a href="#" class="nav-link d-md-none">Çıkış</a></li>
 
         </ul>
@@ -31,17 +29,37 @@
 <%= link_to "Çıkış Yap", "#", class: "dropdown-item" %>
 </div>
 </div>
-
-
-
-
-
-
-    </div>
-
-
-
-
-
+</div>
 </nav>
 </header>
+<style>
+.dropdown-menu-custom {
+  display: none;
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 200px;
+  text-align: left; /* Menü öğelerini sola hizalayalım */
+  transform: translateX(-50px); /* Menü öğelerini sola kaydır */
+}
+
+/* Menü elemanları */
+.dropdown-item {
+  padding: 10px 20px; /* Menü öğeleri için padding */
+  cursor: pointer;
+  text-align: left; /* İçeriği sola hizalayalım */
+}
+
+/* Hover efekti */
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* Avatar ve menü konteyneri */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+</style>

@@ -7,10 +7,7 @@
 
 
   
-  <body data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="tr">
-    <section class="u-clearfix u-section-1" id="sec-d55e">
-      <div class="u-clearfix u-sheet u-sheet-1">
-        <div class="u-form u-form-1">
+
             <%= form_with model: @user, url: sign_up_path, class: "signup-form" do |form| %>
               <%= render partial: "shared/form_errors", locals: { object: form.object } %>
               <div class="u-form-group u-form-name">
@@ -34,13 +31,19 @@
                       <%= form.date_field :dob, placeholder: "AY/GÜN/YIL", class: "u-input u-input-rectangle", required: true %>
                     </div>
                     <div class="u-form-country u-form-group u-form-group-3">
-                    <label for="country-32a8" class="u-label">Ülke</label>
+                    <label for="user_country_id" class="u-label">Ülke</label>
                     <div class="u-form-select-wrapper">
-                      <select id="country-32a8" name="country" class="u-input u-input-rectangle">
-                        <option value="United States">United States</option>
-                      </select>
-                      <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="fill:currentColor;" xml:space="preserve"><polygon class="st0" points="8,12 2,4 14,4 "></polygon></svg>
+                      <%= form.select :country_id, 
+                        options_for_select(Country.all.pluck(:name, :id)), 
+                        { prompt: "Bir ülke seçin" }, 
+                        id: "user_country_id", 
+                        class: "u-input u-input-rectangle" %>
+                      <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="fill:currentColor;" xml:space="preserve">
+                        <polygon class="st0" points="8,12 2,4 14,4 "></polygon>
+                      </svg>
                     </div>
+                  </div>
+                  
               <div class="u-form-email u-form-group u-form-group-7">
                       <%= form.label :password, "Şifre Giriniz", class: "u-label" %>
                       <%= form.password_field :password, placeholder: "Şifre", class: "u-input u-input-rectangle", required: true %>
@@ -54,10 +57,5 @@
                     </div>
            
             <% end %>
-      <%= image_tag 'foto-register.jpg', class: 'u-image u-image-default u-image-1', alt: '', data: { image_width: '2560', image_height: '1600' } %>
-      </div>
-    </section>
-    
-    
-  
-</body>
+     
+
