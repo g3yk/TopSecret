@@ -80,36 +80,44 @@
                 <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="fill:currentColor;" xml:space="preserve"><polygon class="st0" points="8,12 2,4 14,4 "></polygon></svg>
               </div>
             </div>
-            <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-4">
-              <label for="name-f0f4" class="u-label">Adı</label>
-              <input type="text" placeholder="Adınızı Girin" id="name-f0f4" name="name-1" class="u-input u-input-rectangle" required="">
-            </div>
-            <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-5">
-              <label for="name-f0f4" class="u-label">Soyadı</label>
-              <input type="text" placeholder="Soyadınızı Girin" id="name-f0f4" name="name-2" class="u-input u-input-rectangle" required="">
-            </div>
-            <div class="u-form-date u-form-group u-form-group-6">
-              <label for="date-ee62" class="u-label">Doğum Tarihiniz</label>
-              <input type="text" placeholder="AY/GÜN/YIL" id="date-ee62" name="date" class="u-input u-input-rectangle" required="" data-date-format="mm/dd/yyyy">
-            </div>
-            <div class="u-form-email u-form-group u-form-group-7">
-              <label for="email-dba7" class="u-label">Şifre Giriniz</label>
-              <input type="email" placeholder="Şifre" id="email-dba7" name="email-1" class="u-input u-input-rectangle" required="">
-            </div>
-            <div class="u-form-email u-form-group u-form-group-8">
-              <label for="email-0384" class="u-label">Şifrenizi Doğrulayın</label>
-              <input type="email" placeholder="Şifre" id="email-0384" name="email-2" class="u-input u-input-rectangle" required="">
-            </div>
-            <div class="u-align-center u-form-group u-form-submit">
-              <a href="#" class="u-btn u-btn-submit u-button-style">Kayıt Ol </a>
-              <input type="submit" value="submit" class="u-form-control-hidden">
-            </div>
-            <div class="u-form-send-message u-form-send-success"> Teşekkür ederiz! Mesajınız gönderildi. </div>
-            <div class="u-form-send-error u-form-send-message"> Mesajınız gönderilemedi. Lütfen hataları düzeltin ve tekrar deneyin. </div>
-            <input type="hidden" value="" name="recaptchaResponse">
-            <input type="hidden" name="formServices" value="656c9eb2-c226-f983-15fe-766e595c2213">
-          </form>
-        </div>
+            <%= form_with model: @user, url: sign_up_path, class: "signup-form" do |form| %>
+              <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+              <div class="u-form-group u-form-name">
+                      <%= form.label :name, "Username", class: "u-label" %>
+                      <%= form.text_field :name, placeholder: "Kullanıcı Adı Giriniz", class: "u-input u-input-rectangle", required: true %>
+                    </div>
+              <div class="u-form-email u-form-group">
+                      <%= form.label :email, "Email", class: "u-label" %>
+                      <%= form.email_field :email, placeholder: "Geçerli bir e-posta adresi girin", class: "u-input u-input-rectangle", required: true %>
+                    </div>
+              <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-4">
+                    <%= form.label :first_name, "Adı", class: "u-label" %>
+                    <%= form.text_field :first_name, placeholder: "Adınızı Girin", class: "u-input u-input-rectangle", required: true %>
+                  </div>
+              <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-5">
+                  <%= form.label :last_name, "Soyadı", class: "u-label" %>
+                  <%= form.text_field :last_name, placeholder: "Soyadınızı Girin", class: "u-input u-input-rectangle", required: true %>
+                </div>
+              <div class="u-form-date u-form-group u-form-group-6">
+                      <%= form.label :dob, "Doğum Tarihiniz", class: "u-label" %>
+                      <%= form.date_field :dob, placeholder: "AY/GÜN/YIL", class: "u-input u-input-rectangle", required: true %>
+                    </div>
+              <div class="u-form-country u-form-group u-form-group-3">
+                      <%= form.label :country, "Ülke", class: "u-label" %>
+                      <%= form.select :country, [["Türkiye", "Türkiye"]], {}, class: "u-input u-input-rectangle" %>
+                    </div>
+              <div class="u-form-email u-form-group u-form-group-7">
+                      <%= form.label :password, "Şifre Giriniz", class: "u-label" %>
+                      <%= form.password_field :password, placeholder: "Şifre", class: "u-input u-input-rectangle", required: true %>
+                    </div>
+              <div class="u-form-email u-form-group u-form-group-8">
+                      <%= form.label :password_confirmation, "Şifrenizi Doğrulayın", class: "u-label" %>
+                      <%= form.password_field :password_confirmation, placeholder: "Şifre Doğrulayın", class: "u-input u-input-rectangle", required: true %>
+                    </div>
+              <div class="u-align-center u-form-group u-form-submit">
+                    <%= form.submit "Kayıt Ol", class: "u-btn u-btn-submit u-button-style" %>
+                    </div>
+            <% end %>
       <%= image_tag 'foto-register.jpg', class: 'u-image u-image-default u-image-1', alt: '', data: { image_width: '2560', image_height: '1600' } %>
       </div>
     </section>
