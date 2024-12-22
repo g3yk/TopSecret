@@ -45,7 +45,7 @@
       <a href="/account">                      <% if current_user && current_user.avatar.attached? %>
           <%= image_tag current_user.avatar, alt: "Profile Avatar", 
           class: "rounded-circle ml-3 d-none d-md-block", 
-          width: "50px", height: "50px", id: "profile-avatar" %>  
+          width: "80px", height: "80px", id: "profile-avatar" %>  
 <% else %>
   <%= image_tag 'default_profile.png', alt: "Default Avatar", width: "60", class: "rounded-circle avatar" %>
 <% end %></a>
