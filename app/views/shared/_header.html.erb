@@ -42,7 +42,7 @@
   
       </ul>
       <% if user_signed_in? %>
-      <a href="/account/edit">                      <% if current_user && current_user.avatar.attached? %>
+      <a href="/account">                      <% if current_user && current_user.avatar.attached? %>
           <%= image_tag current_user.avatar, alt: "Profile Avatar", 
           class: "rounded-circle ml-3 d-none d-md-block", 
           width: "50px", height: "50px", id: "profile-avatar" %>  

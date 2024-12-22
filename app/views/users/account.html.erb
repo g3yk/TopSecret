@@ -11,43 +11,49 @@
 </style>
 
 <div class="container mt-4">
-<div class="row">
-<div class="col-md-4 text-center">
-  <% if @user.avatar.attached? %>
-    <%= image_tag @user.avatar, class: "avatar" %>
-  <% else %>
-    <%= image_tag 'default_profile.png', class: "avatar" %>
-  <% end %>
-  <h3 class="mt-3">Hello, <span class="font-italic"><%= current_user.first_name %> <%= current_user.last_name %></span></h3>
-  
-  <div class="row mt-4">
-    <div class="col-6">
-      <%= link_to followers_path(@user.username), class: "btn btn-primary btn-block" do %>
-        Followers: <strong><%= @user.followers.count %></strong>
+  <div class="row">
+    <!-- User Avatar and Greeting -->
+    <div class="col-md-4 text-center">
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar, class: "avatar" %>
+      <% else %>
+        <%= image_tag 'default_profile.png', class: "avatar" %>
       <% end %>
+      <h3 class="mt-3">Hello, <span class="font-italic"><%= current_user.first_name %> <%= current_user.last_name %></span></h3>
+      
+      <!-- New Navigation Link -->
+      <a href="account/edit" class="btn btn-link mt-2 text-primary">
+        Edit Profile
+      </a>
+      
+      <!-- Followers and Followings -->
+      <div class="row mt-4">
+        <div class="col-6">
+          <%= link_to followers_path(@user.username), class: "btn btn-primary btn-block" do %>
+            Followers: <strong><%= @user.followers.count %></strong>
+          <% end %>
+        </div>
+        <div class="col-6">
+          <%= link_to followings_path(@user.username), class: "btn btn-primary btn-block" do %>
+            Followings: <strong><%= @user.followings.count %></strong>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <div class="col-6">
-      <%= link_to followings_path(@user.username), class: "btn btn-primary btn-block" do %>
-        Followings: <strong><%= @user.followings.count %></strong>
-      <% end %>
+
+    <!-- User Information -->
+    <div class="col-md-8">
+      <ul class="list-group">
+        <li class="list-group-item">Account Creation Date: <strong><%= current_user.created_at.strftime('%B %d, %Y') %></strong></li>
+        <li class="list-group-item">Username: <strong><%= current_user.username %></strong></li>
+        <li class="list-group-item">Email: <strong><%= current_user.email %></strong></li>
+        <li class="list-group-item">First Name: <strong><%= current_user.first_name %></strong></li>
+        <li class="list-group-item">Last Name: <strong><%= current_user.last_name %></strong></li>
+        <li class="list-group-item">Date of Birth: <strong><%= current_user.date_of_birth %></strong></li>
+        <li class="list-group-item">Phone Number: <strong><%= current_user.phone %></strong></li>
+        <li class="list-group-item">Country: <strong><%= current_user.country.name %></strong></li>
+        <li class="list-group-item">Bio: <strong><%= current_user.bio %></strong></li>
+      </ul>
     </div>
   </div>
-</div>
-
-<div class="col-md-8">
-  <ul class="list-group">
-    <li class="list-group-item">Account Creation Date: <strong><%= current_user.created_at.strftime('%B %d, %Y') %></strong></li>
-    <li class="list-group-item">Username: <strong><%= current_user.username %></strong></li>
-    <li class="list-group-item">Email: <strong><%= current_user.email %></strong></li>
-    <li class="list-group-item">First Name: <strong><%= current_user.first_name %></strong></li>
-    <li class="list-group-item">Last Name: <strong><%= current_user.last_name %></strong></li>
-    <li class="list-group-item">Date of Birth: <strong><%= current_user.date_of_birth %></strong></li>
-    <li class="list-group-item">Phone Number: <strong><%= current_user.phone %></strong></li>
-    <li class="list-group-item">Country: <strong><%= current_user.country.name %></strong></li>
-    <li class="list-group-item">Job Title: <strong><%= current_user.job_title %></strong></li>
-    <li class="list-group-item">Bio: <strong><%= current_user.bio %></strong></li>
-  </ul>
-</div>
-</div>
-
 </div>
