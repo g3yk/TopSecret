@@ -239,10 +239,10 @@
                         <div class="card-body text-center ">
                             <%= image_tag "avatar-dhg.png", alt: "img", width: "120px", height: "120px", class: "rounded-circle mt-n5" %>
 
-                            <h5 class="card-title">Burak Kurt</h5>
-                            <p class="card-text text-justify mb-2">Kendi halinde bir gezgin...</p>
+                            <h5 class="card-title"><%= current_user.username %></h5>
+                            <p class="card-text text-justify mb-2"><%= current_user.bio %></p>
                             <ul class="list-unstyled nav justify-content-center">
-                               <a href="#" class="text-dark text-decoration-none"> <li class="nav-item">Arkadaşlar <br> <strong>12M</strong></li></a>
+                               <a href="#" class="text-dark text-decoration-none"> <li class="nav-item">Takipçiler <br> <strong><%= @user.followers.count %></strong></li></a>
                              
                             </ul>
 
@@ -262,10 +262,10 @@
 
                                
 
-                                <p class="card-text"> <i class="fas fa-user-friends mr-2"></i> Arkadaş Canlısı <a href="#" class="text-decoration-none"></a></p>
-                                <p class="card-text"> <i class="far fa-building mr-2"></i> Google'da Çalışıyor <a href="#" class="text-decoration-none"></a></p>
-                                <p class="card-text"> <i class="fas fa-home mr-2"></i>İstanbul'da <a href="#" class="text-decoration-none">Yaşıyor</a></p>
-                                <p class="card-text"> <i class="fas fa-map-marker mr-2"></i> Türkiye'de <a href="#" class="text-decoration-none">TR</a></p>
+                                
+                                <p class="card-text"> <i class="far fa-building mr-2"></i> <%= current_user.job_title %></p>
+                            
+                                <p class="card-text"> <i class="fas fa-map-marker mr-2"></i> <%= current_user.country.name %></p>
 
 
 
