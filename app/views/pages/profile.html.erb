@@ -254,7 +254,12 @@
 
         <div class="banner">
             <div class="banner-title d-flex flex-column justify-content-center align-items-center">
-                <%= image_tag 'avatar-dhg.png', alt: 'img', class: 'rounded-circle', width: '80', height: '80' %>
+                <% if @user.avatar.attached? %>
+  <%= image_tag @user.avatar, width: "70", class: "rounded-circle avatar" %>
+<% else %>
+  <%= image_tag 'default_profile.png', width: "70", class: "rounded-circle avatar" %>
+<% end %>
+
 
                 <h3 class="text-light"><%= "#{@user.first_name} #{@user.last_name}" %></h3>
                 <p class="text-light"><%= current_user.bio %></p>
