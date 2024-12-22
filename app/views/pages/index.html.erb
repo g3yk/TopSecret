@@ -38,7 +38,12 @@
                      <a href="#" class="text-decoration-none">
                         <li class="media hover-media">
                            
-                                <%= image_tag "avatar-dhg.png", alt: "img", width: "60px", height: "60px", class: "rounded-circle mr-3" %>
+                                <% if @user.avatar.attached? %>
+  <%= image_tag "avatar-dhg.png", alt: "img", width: "60px", height: "60px", class: "rounded-circle mr-3" %>
+<% else %>
+  <%= image_tag 'default_profile.png', width: "60", class: "rounded-circle avatar" %>
+<% end %>
+
 
 
                                 <div class="media-body text-dark">
