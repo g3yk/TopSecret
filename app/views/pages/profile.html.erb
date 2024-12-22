@@ -1,26 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-<%= stylesheet_link_tag 'style', media: 'all' %>
 
 
-<!------------------LIght BOx for Gallery-------------->
-<%= stylesheet_link_tag 'lightbox.min', media: 'all' %>
-
-<script type="text/javascript" src="lightbox-plus-jquery.min.js"></script>
-<!------------------LIght BOx for Gallery-------------->
-
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'style' %>
+  <% end %>
+  
 
 
-
-
-<title>Application</title>
-</head>
 <body>
 
 
@@ -543,7 +528,7 @@
       const profileAvatar = document.getElementById("profile-avatar");
       const dropdownMenu = document.getElementById("dropdown-menu");
 
-      // Avatar'a tıklama ile menüyü göster/gizle
+      
       profileAvatar.addEventListener("click", function (event) {
         event.stopPropagation(); // Menü kapanmasın diye tıklamayı engelle
         dropdownMenu.style.display =

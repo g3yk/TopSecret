@@ -7,3 +7,4 @@
 //= link jquery.js
 //= link nicepage.js
 //= link_tree ../images
+  //= link header.js
