@@ -7,23 +7,27 @@
   padding: 3px;
   border-color: skyblue;
   border-style: solid;
-  transform: translateY(40%);
+
 }
 </style>
-<h1>User List</h1>
-<ul style="font-size: 1.5em">
+<h1 class="display-4 text-center mb-4">Followings</h1>
+<ul class="list-group list-group-flush">
   <% @followings.each do |user| %>
-    <li>
-      <%= link_to user_path(user.username) do %>
+    <li class="list-group-item d-flex align-items-center">
+      <%= link_to user_path(user.username), class: "d-flex align-items-center text-decoration-none text-dark w-100" do %>
         <% if user.avatar.attached? %>
-          <%= image_tag user.avatar, width: "50", class: "avatar" %>
+          <%= image_tag user.avatar, class: "avatar mr-3" %>
         <% else %>
-          <%= image_tag 'default_profile.png' , width: "50", class: "avatar" %>
+          <%= image_tag 'default_profile.png', class: "avatar mr-3" %>
         <% end %>
         
-        <%=  user.username %> - (<%= user.first_name %>, <%= user.last_name %>)
+        <div>
+          <strong class="d-block"><%= user.username %></strong>
+          <small class="text-muted"><%= user.first_name %>, <%= user.last_name %></small>
+        </div>
       <% end %>
     </li>
   <% end %>
 </ul>
+
 

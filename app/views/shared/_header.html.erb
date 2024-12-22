@@ -7,7 +7,7 @@
   
 <header>
   <nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color:#3097D1">
-    <a href="index" class="navbar-brand">
+    <a href="/index" class="navbar-brand">
       <%= image_tag "brand.png", alt: "Logo", class: "img-fluid", width: "80px", height: "100px" %>
     </a>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#responsive">
@@ -17,17 +17,17 @@
     <ul class="navbar-nav mr-auto text-capitalize">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <a href="index" class="nav-link menu-item">Ana Sayfa</a>
+          <a href="/index" class="nav-link menu-item">Ana Sayfa</a>
         </li>
         <li class="nav-item">
-          <a href="profile" class="nav-link menu-item">Profil</a>
+          <a href="/profile" class="nav-link menu-item">Profil</a>
         </li>
         <li class="nav-item">
           <a href="#modalview" class="nav-link menu-item" data-toggle="modal">Mesajlar</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="margin-left:15px;">
           <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-danger nav-link menu-item", 
-                data: { confirm: "Are you sure you want to logout?" } %>
+                data: { confirm: "Are you sure you want to logout?" }  %>
         </li>
       <% else %>
         <li class="nav-item">
@@ -41,9 +41,15 @@
   </div>
   
       </ul>
-        <%= image_tag "avatar-dhg.png", alt: "Profile Avatar", 
-            class: "rounded-circle ml-3 d-none d-md-block", 
-            width: "50px", height: "50px", id: "profile-avatar" %>
+      <% if user_signed_in? %>
+      <a href="/account/edit">                      <% if current_user && current_user.avatar.attached? %>
+          <%= image_tag current_user.avatar, alt: "Profile Avatar", 
+          class: "rounded-circle ml-3 d-none d-md-block", 
+          width: "50px", height: "50px", id: "profile-avatar" %>  
+<% else %>
+  <%= image_tag 'default_profile.png', alt: "Default Avatar", width: "60", class: "rounded-circle avatar" %>
+<% end %></a>
+    <% end %>
       </div>
     </div>
   </nav>

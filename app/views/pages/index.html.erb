@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
 <head>
 
@@ -39,7 +41,7 @@
                         <li class="media hover-media">
                            
                                 <% if @user.avatar.attached? %>
-  <%= image_tag "avatar-dhg.png", alt: "img", width: "60px", height: "60px", class: "rounded-circle mr-3" %>
+  <%= image_tag current_user.avatar alt: "img", width: "60px", height: "60px", class: "rounded-circle mr-3" %>
 <% else %>
   <%= image_tag 'default_profile.png', width: "60", class: "rounded-circle avatar" %>
 <% end %>
@@ -61,8 +63,12 @@
                     <a href="#" class="text-decoration-none">
                             <li class="media hover-media">
                                
-                                    <%= image_tag "avatar-fat.jpg", alt: "img", width: "60px", height: "60px", class: "rounded-circle mr-3" %>
-
+                                    
+                                    <% if current_user && current_user.avatar.attached? %>
+<%= image_tag @user.avatar, alt: "img", width: "60px", height: "60px", class: "rounded-circle mr-3" %>
+<% else %>
+  <%= image_tag 'default_profile.png', alt: "Default Avatar", width: "60", class: "rounded-circle avatar" %>
+<% end %>
     
                                     <div class="media-body text-dark">
                                             <h6 class="media-header">Mark Otto and <strong> 3 others</strong></h6>
@@ -242,19 +248,52 @@
                         <%= image_tag "photo-1455448972184-de647495d428.jpg", alt: "", class: "card-img-top img-fluid" %>
 
                         <div class="card-body text-center ">
-                            <%= image_tag "avatar-dhg.png", alt: "img", width: "120px", height: "120px", class: "rounded-circle mt-n5" %>
-
+                            
+                            <% if current_user && current_user.avatar.attached? %>
+  <%= image_tag current_user.avatar, alt: "img", width: "120px", height: "120px", class: "rounded-circle mt-n5" %>
+<% else %>
+  <%= image_tag 'default_profile.png', alt: "Default Avatar", width: "60", class: "rounded-circle avatar" %>
+<% end %>
                             <h5 class="card-title"><%= current_user.username %></h5>
                             <p class="card-text text-justify mb-2"><%= current_user.bio %></p>
                             <ul class="list-unstyled nav justify-content-center">
-                               <a href="#" class="text-dark text-decoration-none"> <li class="nav-item">Takipçiler <br> <strong><%= @user.followers.count %></strong></li></a>
+                            <div class="d-flex justify-content-around align-items-center py-3 bg-light border rounded">
+                            <a href="<%= followers_path(@user.username) %>" class="text-dark text-decoration-none text-center">
+                              <div>
+                                <span class="d-block">Followers</span>
+                                <strong class="display-6"><%= @user.followers.count %></strong>
+                              </div>
+                            </a>
+                            <a href="<%= followings_path(@user.username) %>" class="text-dark text-decoration-none text-center">
+                              <div>
+                                <span class="d-block">Followings</span>
+                                <strong class="display-6"><%= @user.followings.count %></strong>
+                              </div>
+                            </a>
+                          </div>
+                          
                              
                             </ul>
 
                         </div>
 
 
+<style>
+a.text-decoration-none:hover {
+  color: #3097D1; /* Highlight color on hover */
+  text-decoration: underline; /* Adds underline on hover */
+}
 
+div.d-flex > a {
+  padding: 10px 20px; /* Adds padding to the clickable area */
+  transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+div.d-flex > a:hover {
+  background-color: rgba(48, 151, 209, 0.1); /* Subtle background change on hover */
+  border-radius: 8px; /* Adds rounded effect on hover */
+}
+</style>
 
                     </div>
 
@@ -263,7 +302,12 @@
 
                         <div class="card-body">
 
-                                <h5 class="mb-3 card-title">Hakkında <small><a href="#" class="ml-1">Edit</a></small></h5>
+                        <h5 class="mb-3 card-title">
+                        Hakkında 
+                        <small>
+                          <%= link_to "Edit", "/account/edit", class: "ml-1" %>
+                        </small>
+                      </h5>
 
                                
 
@@ -368,7 +412,7 @@
    <div class="card-body">
 
     <div class="media">
-        <%= image_tag "avatar-dhg.png", alt: "img", width: "55px", height: "55px", class: "rounded-circle mr-3" %>
+        <%= image_tag "avatar-fat.jpg", alt: "img", width: "55px", height: "55px", class: "rounded-circle mr-3" %>
 
 
         <div class="media-body">
@@ -412,7 +456,11 @@
 
         
             <div class="media mb-3">
-                    <%= image_tag "avatar-dhg.png", alt: "img", width: "45px", height: "45px", class: "rounded-circle mr-2" %>
+            <% if current_user && current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar, alt: "img", width: "45px", height: "45px", class: "rounded-circle mt-n5" %>
+          <% else %>
+            <%= image_tag 'default_profile.png', alt: "Default Avatar", width: "60", class: "rounded-circle avatar" %>
+          <% end %>
 
                     <div class="media-body">
                             <p class="card-text text-justify">Burak Kurt: Herkese verdiğini emeklerden dolayı çok teşekkür ediyorum. Nice beraber senelere...</p>

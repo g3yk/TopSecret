@@ -1,53 +1,68 @@
-<% content_for :head do %>
-  <%= stylesheet_link_tag 'signup' %> <!-- Link to your specific CSS file -->
-<% end %>
 
-<h2>Edit Profile</h2>
+<% content_for :head do %>
+
+
+  <%= stylesheet_link_tag 'Ana-Sayfa' %>
+  <%= stylesheet_link_tag 'nicepage' %>
+  <% end %>
+  
+<h2 style="text-align: center;">Edit Profile</h2>
+<section class="u-clearfix u-section-1" id="sec-b0a6">
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <div class="u-form u-form-1">
 <%= form_with model: @user, local: true, url: update_profile_path, class: "signup-form", method: :put do |form| %>
   <%= render partial: "shared/form_errors", locals: { object: form.object } %>
-  <div>
-    <%= form.label :email %>
-    <%= form.email_field :email, required: true, disabled: true %>
+  <div class="u-form-email u-form-group">
+  <%= form.label :email, "Email", class: "u-label" %>
+  <%= form.email_field :email, placeholder: "Geçerli bir e-posta adresi girin", id: "email-96b3", class: "u-input u-input-rectangle", required: true, disabled: true %>
+</div>
+<div class="u-form-group u-form-name u-form-group-2">
+<%= form.label :username, "Username", class: "u-label" %>
+<%= form.text_field :username, placeholder: "Username giriniz", id: "name-d06d", class: "u-input u-input-rectangle", required: true %>
+</div>
+<div class="u-form-group u-form-message">
+<%= form.label :bio, "Biyografi", class: "u-label" %>
+<%= form.text_area :bio, placeholder: "Biyografi giriniz", rows: 4, cols: 50, id: "message-96b3", class: "u-input u-input-rectangle" %>
+</div>
+<div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-4">
+<%= form.label :first_name, "Adı", class: "u-label" %>
+<%= form.text_field :first_name, placeholder: "Adınızı Girin", id: "name-3892", class: "u-input u-input-rectangle", required: true %>
+</div>
+<div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-5">
+<%= form.label :last_name, "Soyadı", class: "u-label" %>
+<%= form.text_field :last_name, placeholder: "Soyadınızı Girin", id: "name-3892", class: "u-input u-input-rectangle", required: true %>
+</div>
+<div class="u-form-date u-form-group u-form-group-6">
+      <%= form.label :date_of_birth, "Doğum Tarihiniz", class: "u-label" %>
+      <%= form.date_field :date_of_birth, placeholder: "AY/GÜN/YIL", class: "u-input u-input-rectangle", required: true %>
+    </div>
+    <div class="u-form-country u-form-group u-form-group-3">
+    <%= form.label :country_id, "Ülke", class: "u-label" %>
+    <div class="u-form-select-wrapper">
+      <%= form.select :country_id, options_for_select(Country.all.pluck(:name, :id)), { prompt: "Bir ülke seçin" }, id: "user_country_id", class: "u-input u-input-rectangle", required: true %>
+      <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="fill:currentColor;" xml:space="preserve">
+        <polygon class="st0" points="8,12 2,4 14,4 "></polygon>
+      </svg>
+    </div>
   </div>
-  <div>
-    <%= form.label :username %>
-    <%= form.text_field :username, required: true %>
+  <div class="u-form-group u-form-phone u-form-group-7">
+  <%= form.label :phone, "Telefon", class: "u-label" %>
+  <%= form.telephone_field :phone, placeholder: "Telefonunuzu girin (örn. +14155552675)", id: "phone-6325", class: "u-input u-input-rectangle", required: true, pattern: "\\+?\\d{0,3}[\\s\\(\\-]?([0-9]{2,3})[\\s\\)\\-]?([\\s\\-]?)([0-9]{3})[\\s\\-]?([0-9]{2})[\\s\\-]?([0-9]{2})" %>
+</div>
+<div class="form-group">
+<%= form.label :avatar, class: "form-label" %>
+<%= form.file_field :avatar, accept: 'image/png,image/jpeg,image/jpg', class: "form-control-file" %>
+</div>
+  <div class="u-align-center u-form-group u-form-submit">
+  <%= form.submit "Kaydet", class: "u-btn u-btn-submit u-button-style" %>
+</div>
+        <div class="u-form-send-message u-form-send-success">
+          Teşekkür ederiz! Mesajınız gönderildi.
+        </div>
+        <div class="u-form-send-error u-form-send-message">
+          Mesajınız gönderilemedi. Lütfen hataları düzeltin ve tekrar deneyin.
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div>
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, required: true %>
-  </div>
-  <div>
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, required: true %>
-  </div>
-  <div>
-    <%= form.label :date_of_birth %>
-    <%= form.date_field :date_of_birth, required: true %>
-  </div>
-  <div>
-    <%= form.label :country_id %>
-    <%= form.collection_select(:country_id, Country.all, :id, :name, prompt: 'Select a Country', required: true) %>
-  </div>
-  <div>
-    <%= form.label :phone %>
-    <%= form.telephone_field :phone, placeholder: '+xx xxxxxxxxxx' %>
-  </div>
-  <div>
-    <%= form.label :city %>
-    <%= form.text_field :city %>
-  </div>
-  <div>
-    <%= form.label :job_title %>
-    <%= form.text_field :job_title %>
-  </div>
-  <div>
-    <%= form.label :avatar %>
-    <%= form.file_field :avatar, accept: 'image/png,image/jpeg,image/jpg' %>
-  </div>
-  <div>
-    <%= form.label :bio %>
-    <%= form.text_area :bio, rows: 10, placeholder: "Tell us about yourself..." %>
-  </div>
-  <%= form.submit "Update Profile" %>
-<% end %>
+</section>
