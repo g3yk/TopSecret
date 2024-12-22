@@ -1,23 +1,50 @@
 <% content_for :head do %>
-  <%= stylesheet_link_tag 'signup' %> <!-- Link to your specific CSS file -->
+  <%= stylesheet_link_tag 'nicepage' %>
+  <%= stylesheet_link_tag 'index' %> <!-- Link to your specific CSS file -->
 <% end %>
 
-<h2>Login</h2>
 
-<%= form_with url: login_path, scope: :user, class: "signup-form" do |form| %>
-  <% if flash.now[:error] %>
-    <div style="color: red; text-align: center; font-style: italic">
-      <%= flash.now[:error] %>
+<section class="u-clearfix u-section-1" id="carousel_e5a0">
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <div class="data-layout-selected u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+      <div class="u-layout">
+        <div class="u-layout-row">
+          <div class="u-align-left u-container-style u-layout-cell u-size-30 u-white u-layout-cell-1" data-animation-name="customAnimationIn" data-animation-duration="1200" data-animation-delay="500">
+            <div class="u-container-layout u-container-layout-1">
+              <h2 class="u-align-left u-text u-text-1">Giriş Yapın</h2>
+              <div class="custom-expanded u-align-left u-form u-form-1">
+              <%= form_with url: login_path, scope: :user, class: "signup-form" do |form| %>
+                <% if flash.now[:error] %>
+                  <div style="color: red; text-align: center; font-style: italic">
+                    <%= flash.now[:error] %>
+                  </div>
+                <% end %>
+                  <div class="u-form-email u-form-group u-label-top">
+                    <%= form.label :login, "Email", class: "u-label", hidden: true %>
+                    <%= form.text_field :login, placeholder: "Email ya da kullanıcı adınızı giriniz", id: "email-5a14", class: "u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-none u-input-1", required: true %>
+                  </div>
+                  <div class="u-form-password u-form-group u-label-top u-form-group-2">
+                    <%= form.label :password, "Parola", class: "u-label" %>
+                    <%= form.password_field :password, placeholder: "Parolanızı giriniz", id: "password-fd19", class: "u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-none u-input-2", required: true %>
+                  </div>
+                  <div class="u-align-right u-form-group u-form-submit u-label-top" style="margin-top: 20px;">
+                    <%= form.submit "gİRİŞ YAP", class: "u-active-black u-border-none u-btn u-btn-round u-btn-submit u-button-style u-hover-black u-palette-1-base u-radius u-text-active-white u-text-body-alt-color u-text-hover-white u-btn-1" %>
+                  </div>
+                <% end %>
+              </div>
+              
+              <div style="margin-top: 20px;">
+              <%= link_to "Bir hesabınız yok mu? Kayıt olun.", "#", class: "u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-palette-1-base u-btn-2" %>
+            </div>
+            </div>
+          </div>
+          <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="200" data-animation-direction="">
+            <div class="u-container-layout u-container-layout-2">
+              <%= image_tag "login.jpg", class: "custom-expanded u-image u-image-contain u-image-1", data: { image_width: 2928, image_height: 2117 } %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :login %>
-    <%= form.text_field :login, placeholder: "Username or Email", required: true %>
   </div>
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password, required: true %>
-  </div>
-  <%= form.submit "Sign In" %>
-<% end %>
+</section>
