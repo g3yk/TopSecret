@@ -1,16 +1,61 @@
 <% content_for :head do %>
 
-<%= stylesheet_link_tag 'nicepage' %>
-<%= stylesheet_link_tag 'Sayfa-1' %>
-<% end %>
+  <%= stylesheet_link_tag 'nicepage' %>
+  <%= stylesheet_link_tag 'Sayfa-1' %>
+  <% end %>
 
 
-<section class="container my-5">
-  <div class="row align-items-center">
+
+   
+
+
+
+<style>
+  .img-vibrant {
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    filter: brightness(1.1) contrast(1.2);
+  }
+
+  .img-vibrant:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+</style>
+
+<style>
+  /* Background image styling */
+  .background-container {
+    background-image: url('<%= asset_path 'foto-register.jpg' %>');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform:translateY(-3%);
+
+  }
+
+  
+  .form-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Slight transparency */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px; /* Set a max width for the form */
+  }
+
+  
+</style>
+
+<section class="container-fluid p-0">
+  <div class="row no-gutters background-container">
     <!-- Form Section -->
-    <div class="col-lg-6">
-      <div class="card shadow p-4">
-        <h3 class="text-center mb-4">Kayıt Ol</h3>
+    <div class="col-lg-6 d-flex justify-content-center">
+      <div class="form-container">
+        <h2 class="text-center mb-4">Kayıt Ol</h3>
         <%= form_with model: @user, url: sign_up_path, class: "signup-form" do |form| %>
           <%= render partial: "shared/form_errors", locals: { object: form.object } %>
 
@@ -51,15 +96,10 @@
           </div>
 
           <!-- Country -->
-          <div class="u-form-country u-form-group u-form-group-3">
-          <%= form.label :country_id, "Ülke", class: "u-label" %>
-          <div class="u-form-select-wrapper">
-            <%= form.select :country_id, options_for_select(Country.all.pluck(:name, :id)), { prompt: "Bir ülke seçin" }, id: "user_country_id", class: "u-input u-input-rectangle", required: true %>
-            <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="fill:currentColor;" xml:space="preserve">
-              <polygon class="st0" points="8,12 2,4 14,4 "></polygon>
-            </svg>
+          <div class="mb-3">
+            <%= form.label :country_id, "Ülke", class: "form-label" %>
+            <%= form.select :country_id, options_for_select(Country.all.pluck(:name, :id)), { prompt: "Bir ülke seçin" }, id: "user_country_id", class: "form-control", required: true %>
           </div>
-        </div>
 
           <!-- Password -->
           <div class="mb-3">
@@ -79,11 +119,6 @@
           </div>
         <% end %>
       </div>
-    </div>
-
-    <!-- Image Section -->
-    <div class="col-lg-6 d-none d-lg-block">
-      <%= image_tag "foto-register.jpg", class: "img-fluid rounded", alt: "Register Image" %>
     </div>
   </div>
 </section>

@@ -40,11 +40,11 @@
                      <a href="#" class="text-decoration-none">
                         <li class="media hover-media">
                            
-                                <% if @user.avatar.attached? %>
-  <%= image_tag current_user.avatar alt: "img", width: "60px", height: "60px", class: "rounded-circle mr-3" %>
-<% else %>
-  <%= image_tag 'default_profile.png', width: "60", class: "rounded-circle avatar" %>
-<% end %>
+                        <% if current_user && current_user.avatar.attached? %>
+                        <%= image_tag @user.avatar, alt: "img", width: "60px", height: "60px", class: "rounded-circle mr-3" %>
+                        <% else %>
+                          <%= image_tag 'default_profile.png', alt: "Default Avatar", width: "60", class: "rounded-circle avatar" %>
+                        <% end %>
 
 
 
@@ -405,8 +405,8 @@ div.d-flex > a:hover {
 
 
 
-
-
+                        
+                         
 
                            
    <div class="card-body">
