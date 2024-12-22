@@ -1,6 +1,6 @@
 <% content_for :head do %>
   <%= stylesheet_link_tag 'nicepage' %>
-  <%= stylesheet_link_tag 'index' %> <!-- Link to your specific CSS file -->
+  <%= stylesheet_link_tag 'index' %> 
 <% end %>
 
 
@@ -9,13 +9,13 @@
     <div class="data-layout-selected u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
       <div class="u-layout">
         <div class="u-layout-row">
-          <div class="u-align-left u-container-style u-layout-cell u-size-30 u-white u-layout-cell-1" data-animation-name="customAnimationIn" data-animation-duration="1200" data-animation-delay="500">
+          <div class="u-align-left u-container-style u-layout-cell u-size-30 u-white u-layout-cell-1" id="animated-element" data-animation-name="customAnimationIn" data-animation-duration="1200" data-animation-delay="500" >
             <div class="u-container-layout u-container-layout-1">
               <h2 class="u-align-left u-text u-text-1">Giriş Yapın</h2>
               <div class="custom-expanded u-align-left u-form u-form-1">
               <%= form_with url: login_path, scope: :user, class: "signup-form" do |form| %>
                   <div class="u-form-email u-form-group u-label-top">
-                    <%= form.label :login, "Email", class: "u-label"%>
+                    <%= form.label :login, "Email / Username", class: "u-label"%>
                     <%= form.text_field :login, placeholder: "Email ya da kullanıcı adınızı giriniz", id: "email-5a14", class: "u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-none u-input-1", required: true %>
                   </div>
                   <div class="u-form-password u-form-group u-label-top u-form-group-2">
