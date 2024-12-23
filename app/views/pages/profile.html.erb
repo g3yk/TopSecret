@@ -1,572 +1,138 @@
-
-
 <% content_for :head do %>
   <%= stylesheet_link_tag 'style' %>
+<% end %>
+
+<!---------------------------MOdal Section  satrts------------------->
+
+<div class="modal fade" id="followers" >
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title h4">Followers</div>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <ul class="list-unstyled">
+          <% @user.followers.each do |follower| %>
+            <%= link_to user_path(follower.username), class: "text-decoration-none" do %>
+              <li class="media hover-media">
+                <% if follower.avatar.attached? %>
+                  <%= image_tag follower.avatar, width: "60", class: "rounded-circle avatar" %>
+                <% else %>
+                  <%= image_tag 'default_profile.png', width: "60", class: "rounded-circle avatar" %>
+                <% end %>
+                <div class="media-body text-dark" style="margin-left: 1rem">
+                  <h6 class="media-header"><%= follower.first_name %>, <strong><%= follower.last_name %></strong></h6>
+                  <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+              </li>
+            <% end %>
+            
+            <hr class="my-3">
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="followings" >
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title h4">Followings</div>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <ul class="list-unstyled">
+          <% @user.followings.each do |following| %>
+
+            <%= link_to user_path(following.username), class: "text-decoration-none" do %>
+              <li class="media hover-media">
+                <% if following.avatar.attached? %>
+                  <%= image_tag following.avatar, width: "60", class: "rounded-circle avatar" %>
+                <% else %>
+                  <%= image_tag 'default_profile.png', width: "60", class: "rounded-circle avatar" %>
+                <% end %>
+                <div class="media-body text-dark" style="margin-left: 1rem">
+                  <h6 class="media-header"><%= following.first_name %>, <strong><%= following.last_name %></strong></h6>
+                  <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+              </li>
+            <% end %>
+            
+            <hr class="my-3">
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------------------------------MOdal Ends---------------------------->
+<!-----------------------------------Banner/img Starts-------------------->
+<div class="banner d-flex flex-column justify-content-center" style="gap: 5rem">
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar, width: "70", class: "rounded-circle avatar" %>
+    <% else %>
+      <%= image_tag 'default_profile.png', width: "70", class: "rounded-circle avatar" %>
+    <% end %>
+
+    <h3 class="text-light"><%= "#{@user.first_name} #{@user.last_name}" %></h3>
+    <p class="text-light"><%= current_user.bio %></p>
+
+  </div>
+  <div class="d-flex justify-content-center align-items-end">
+    <ul class="nav text-light">
+      <li class="nav-item nav-link active">Fotoğraflar</li>
+      <li class="nav-item nav-link active">Postlar</li>
+      <li><a href="#followers" class="nav-item nav-link active text-light" data-toggle="modal" style="">Followers</a></li>
+      <li><a href="#followings" class="nav-item nav-link active text-light" data-toggle="modal" style="">Followings</a></li>
+    </ul>
+  </div>
+</div>
+
+<!--------------------Image Portfolio----------------->
+
+<div class="grid-template container my-4" style="grid-template-columns: repeat(3,1fr)">
+  <% if @user.posts %>
+    <% @user.posts.each do |post| %>
+      <div>
+        <h3 style="position: relative"><%= post.title.capitalize %> <span style="position: absolute; color:#aaa; right: 0; font-size: 1rem;"><%= post.created_at.strftime('%B %d, %Y') %></span></h3>
+        <%= link_to show_post_path(post) do %>
+          <%= image_tag post.avatar.first, alt: '', class: 'img-fluid', style: 'width:455px; height: 255px;' %>
+        <% end %>
+        <p><%= post.content %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <h1>The user has not shared any posts yet.</h1>
   <% end %>
-  
-
-
-<body>
-
-
-   
-
-
-
-         <!---------------------------MOdal Section  satrts------------------->
-
-    <div class="modal fade" id="modalview" >
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-    
-                <div class="modal-content">
-    
-    
-                    <div class="modal-header">
-                        <div class="modal-title h4">Messages</div>
-    
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-    
-    
-                    <div class="modal-body">
-    
-    
-                        <ul class="list-unstyled">
-    
-    
-                         <a href="#" class="text-decoration-none">
-                            <li class="media hover-media">
-                               
-                                    <% if @user.avatar.attached? %>
-  <%= image_tag @user.avatar, width: "60", class: "rounded-circle avatar" %>
-<% else %>
-  <%= image_tag 'default_profile.png', width: "60", class: "rounded-circle avatar" %>
-<% end %>
-
-
-    
-                                    <div class="media-body text-dark">
-                                            <h6 class="media-header">Jchob Thunder and <strong> 1 others</strong></h6>
-                                            <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-    
-                                    </div>
-    
-                            </li>
-                        </a>
-                        <hr class="my-3">
-    
-    
-                        
-                        <a href="#" class="text-decoration-none">
-                                <li class="media hover-media">
-                                   
-                                        <%= image_tag 'avatar-fat.jpg', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
-
-        
-                                        <div class="media-body text-dark">
-                                                <h6 class="media-header">Mark Otto and <strong> 3 others</strong></h6>
-                                                <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        
-                                        </div>
-        
-                                </li>
-                            </a>
-    
-    
-                            <hr class="my-3">
-    
-    
-                            <a href="#" class="text-decoration-none">
-                                <li class="media hover-media">
-                                   
-                                        <%= image_tag 'avatar-mdo.png', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
-
-        
-                                        <div class="media-body text-dark">
-                                                <h6 class="media-header">Archer andu and <strong> 5 others</strong></h6>
-                                                <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        
-                                        </div>
-        
-                                </li>
-                            </a>
-    
-                            <hr class="my-3">
-    
-    
-                            <a href="#" class="text-decoration-none">
-                                    <li class="media hover-media">
-                                       
-                                            <%= image_tag 'avatar-dhg.png', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
-
-            
-                                            <div class="media-body text-dark">
-                                                    <h6 class="media-header">Jchob Thunder and <strong> 1 others</strong></h6>
-                                                    <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            
-                                            </div>
-            
-                                    </li>
-                                </a>
-                                <hr class="my-3">
-            
-            
-                                
-                                <a href="#" class="text-decoration-none">
-                                        <li class="media hover-media">
-                                           
-                                                <%= image_tag 'avatar-dhg.png', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
-
-                
-                                                <div class="media-body text-dark">
-                                                        <h6 class="media-header">Mark Otto and <strong> 3 others</strong></h6>
-                                                        <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                
-                                                </div>
-                
-                                        </li>
-                                    </a>
-            
-            
-                                    <hr class="my-3">
-            
-            
-                                    <a href="#" class="text-decoration-none">
-                                        <li class="media hover-media">
-                                           
-                                                <%= image_tag 'avatar-mdo.png', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
-
-                
-                                                <div class="media-body text-dark">
-                                                        <h6 class="media-header">Archer andu and <strong> 5 others</strong></h6>
-                                                        <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                
-                                                </div>
-                
-                                        </li>
-                                    </a>
-    
-                            
-                                    <hr class="my-3">
-                                    <a href="#" class="text-decoration-none">
-                                            <li class="media hover-media">
-                                               
-                                                    <%= image_tag 'avatar-dhg.png', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
-
-                    
-                                                    <div class="media-body text-dark">
-                                                            <h6 class="media-header">Jchob Thunder and <strong> 1 others</strong></h6>
-                                                            <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    
-                                                    </div>
-                    
-                                            </li>
-                                        </a>
-                                        <hr class="my-3">
-                    
-                    
-                                        
-                                        <a href="#" class="text-decoration-none">
-                                                <li class="media hover-media">
-                                                   
-                                                        <%= image_tag 'avatar-fat.jpg', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
-
-                        
-                                                        <div class="media-body text-dark">
-                                                                <h6 class="media-header">Mark Otto and <strong> 3 others</strong></h6>
-                                                                <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        
-                                                        </div>
-                        
-                                                </li>
-                                            </a>
-                    
-                    
-                                            <hr class="my-3">
-                    
-                    
-                                            <a href="#" class="text-decoration-none">
-                                                <li class="media hover-media">
-                                                   
-                                                        <%= image_tag 'avatar-mdo.png', alt: 'img', width: '60', height: '60', class: 'rounded-circle mr-3' %>
-
-                        
-                                                        <div class="media-body text-dark">
-                                                                <h6 class="media-header">Archer andu and <strong> 5 others</strong></h6>
-                                                                <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        
-                                                        </div>
-                        
-                                                </li>
-                                            </a>
-        
-        
-    
-    
-                        </ul>
-    
-    
-    
-                        
-    
-                    </div>
-                </div>
-    
-    
-            </div>
-    
-    
-        </div>
-    
-        <!-------------------------------MOdal Ends---------------------------->
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-----------------------------------Banner/img Starts-------------------->
-
-
-        <div class="banner">
-            <div class="banner-title d-flex flex-column justify-content-center align-items-center">
-                <% if @user.avatar.attached? %>
-  <%= image_tag @user.avatar, width: "70", class: "rounded-circle avatar" %>
-<% else %>
-  <%= image_tag 'default_profile.png', width: "70", class: "rounded-circle avatar" %>
-<% end %>
-
-
-                <h3 class="text-light"><%= "#{@user.first_name} #{@user.last_name}" %></h3>
-                <p class="text-light"><%= current_user.bio %></p>
-
-            </div>
-
-
-            <div class="banner-end d-flex justify-content-center align-items-end">
-                <ul class="nav text-light">
-                    <li class="nav-item nav-link active">Fotoğraflar</li>
-                    <li class="nav-item nav-link active">Postlar</li>
-                    
-
-                </ul>
-
-            </div>
-
-
-            
-
-        </div>
-
-        <!--------------------Image Portfolio----------------->
-
-
-        <div class="grid-template container my-4">
-            
-
-            <div class="item-1">
-                   
-                
-           
-           <a href="banner.jpg" data-lightbox="id">
-  <img src="banner.jpg" alt="" class="img-fluid" style="width:455px; height: 255px;">
-</a>
-     
-          
-
-
-            </div>
-
-            <div class="item-2 ">
-                <a href="<%= asset_path('banner.jpg') %>" data-lightbox="id">
-  <%= image_tag 'banner.jpg', alt: '', class: 'img-fluid', style: 'width:217px; height: 255px;' %>
-</a>
-   
-
-                </div>
-                <div class="item-3">
-  <a href="<%= asset_path('banner.jpg') %>" data-lightbox="id">
-    <%= image_tag 'banner.jpg', alt: '', class: 'img-fluid', style: 'width:217px; height: 255px;' %>
-  </a>
-</div>
-<div class="item-4">
-  <a href="<%= asset_path('banner.jpg') %>" data-lightbox="id">
-    <%= image_tag 'banner.jpg', alt: '', class: 'img-fluid', style: 'width:217px; height: 255px;' %>
-  </a>
-</div>
-<div class="item-5">
-  <a href="<%= asset_path('banner.jpg') %>" data-lightbox="id">
-    <%= image_tag 'banner.jpg', alt: '', class: 'img-fluid', style: 'width:217px; height: 255px;' %>
-  </a>
-</div>
-<div class="item-6">
-  <a href="<%= asset_path('banner.jpg') %>" data-lightbox="id">
-    <%= image_tag 'banner.jpg', alt: '', class: 'img-fluid', style: 'width:217px; height: 255px;' %>
-  </a>
-</div>
-<div class="item-7">
-  <a href="<%= asset_path('banner.jpg') %>" data-lightbox="id">
-    <%= image_tag 'banner.jpg', alt: '', class: 'img-fluid', style: 'width:455px; height: 255px;' %>
-  </a>
-</div>
-<div class="item-8">
-  <a href="<%= asset_path('banner.jpg') %>" data-lightbox="id">
-    <%= image_tag 'banner.jpg', alt: '', class: 'img-fluid', style: 'width:217px; height: 255px;' %>
-  </a>
-</div>
-<div class="item-9">
-  <a href="<%= asset_path('banner.jpg') %>" data-lightbox="id">
-    <%= image_tag 'banner.jpg', alt: '', class: 'img-fluid', style: 'width:217px; height: 255px;' %>
-  </a>
-</div>
-<div class="item-10">
-  <a href="<%= asset_path('banner.jpg') %>" data-lightbox="id">
-    <%= image_tag 'banner.jpg', alt: '', class: 'img-fluid', style: 'width:217px; height: 255px;' %>
-  </a>
-</div>
-<div class="item-11">
-  <a href="<%= asset_path('banner.jpg') %>" data-lightbox="id">
-    <%= image_tag 'banner.jpg', alt: '', class: 'img-fluid', style: 'width:455px; height: 255px;' %>
-  </a>
-</div>
-<div class="item-12">
-  <a href="<%= asset_path('banner.jpg') %>" data-lightbox="id">
-    <%= image_tag 'banner.jpg', alt: '', class: 'img-fluid', style: 'width:217px; height: 255px;' %>
-  </a>
 </div>
 
-                        
-                                
-                                
-            
-        
-    
-
-
-
-
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const profileAvatar = document.getElementById("profile-avatar");
-      const dropdownMenu = document.getElementById("dropdown-menu");
-
-      
-      profileAvatar.addEventListener("click", function (event) {
-        event.stopPropagation(); // Menü kapanmasın diye tıklamayı engelle
-        dropdownMenu.style.display =
-          dropdownMenu.style.display === "block" ? "none" : "block"; // Menü göster/gizle
-      });
-
-      // Sayfanın herhangi bir yerine tıklanırsa menüyü kapat
-      document.addEventListener("click", function () {
-        dropdownMenu.style.display = "none"; // Menü kapanacak
-      });
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const profileAvatar = document.getElementById("profile-avatar");
+    const dropdownMenu = document.getElementById("dropdown-menu");
+
+    profileAvatar.addEventListener("click", function (event) {
+      event.stopPropagation(); // Menü kapanmasın diye tıklamayı engelle
+      dropdownMenu.style.display =
+        dropdownMenu.style.display === "block" ? "none" : "block"; // Menü göster/gizle
     });
-  </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // Sayfanın herhangi bir yerine tıklanırsa menüyü kapat
+    document.addEventListener("click", function () {
+      dropdownMenu.style.display = "none"; // Menü kapanacak
+    });
+  });
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
-</html>
