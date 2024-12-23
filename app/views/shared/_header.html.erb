@@ -1,6 +1,7 @@
 
 <% content_for :head do %>
   <%= javascript_include_tag "header" %>
+  
 
   <% end %>
   
@@ -14,46 +15,43 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="responsive">
-    <ul class="navbar-nav mr-auto text-capitalize">
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <a href="/index" class="nav-link menu-item">Ana Sayfa</a>
-        </li>
-        <li class="nav-item">
-          <a href="/profile" class="nav-link menu-item">Profil</a>
-        </li>
-        <li class="nav-item">
-          <a href="#modalview" class="nav-link menu-item" data-toggle="modal">Mesajlar</a>
-        </li>
-        <li class="nav-item" style="margin-left:15px;">
-          <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-danger nav-link menu-item", 
-                data: { confirm: "Are you sure you want to logout?" }  %>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", login_path, class: "nav-link menu-item" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Signup", sign_up_path, class: "nav-link menu-item" %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-  
+      <ul class="navbar-nav mr-auto text-capitalize">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <a href="/index" class="nav-link menu-item">Ana Sayfa</a>
+          </li>
+          <li class="nav-item">
+            <a href="/profile" class="nav-link menu-item">Profil</a>
+          </li>
+          <li class="nav-item">
+            <a href="#modalview" class="nav-link menu-item" data-toggle="modal">Mesajlar</a>
+          </li>
+          <li class="nav-item" style="margin-left:15px;">
+            <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-danger nav-link menu-item", 
+                  data: { confirm: "Are you sure you want to logout?" }  %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", login_path, class: "nav-link menu-item" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Signup", sign_up_path, class: "nav-link menu-item" %>
+          </li>
+        <% end %>
       </ul>
-      <% if user_signed_in? %>
-      <a href="/account">                      <% if current_user && current_user.avatar.attached? %>
-          <%= image_tag current_user.avatar, alt: "Profile Avatar", 
-          class: "rounded-circle ml-3 d-none d-md-block", 
-          width: "80px", height: "80px", id: "profile-avatar" %>  
-<% else %>
-  <%= image_tag 'default_profile.png', alt: "Default Avatar", width: "60", class: "rounded-circle avatar" %>
-<% end %></a>
-    <% end %>
-      </div>
     </div>
+
+    <% if user_signed_in? %>
+      <a href="/account">
+        <% if current_user && current_user.avatar.attached? %>
+          <!-- Avatar for larger screens (hidden on mobile) -->
+          <%= image_tag current_user.avatar, alt: "Profile Avatar", class: "rounded-circle ml-3 d-none d-md-block", width: "80px", height: "80px", id: "profile-avatar" %>  
+        <% else %>
+          <%= image_tag 'default_profile.png', alt: "Default Avatar", class: "rounded-circle ml-3 d-none d-md-block", width: "60", height: "60" %>
+        <% end %>
+      </a>
+    <% end %>
   </nav>
 </header>
-
 
 
