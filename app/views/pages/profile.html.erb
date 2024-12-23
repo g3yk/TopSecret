@@ -105,7 +105,9 @@
       <div>
         <h3 style="position: relative"><%= post.title.capitalize %> <span style="position: absolute; color:#aaa; right: 0; font-size: 1rem;"><%= post.created_at.strftime('%B %d, %Y') %></span></h3>
         <%= link_to show_post_path(post) do %>
-          <%= image_tag post.avatar.first, alt: '', class: 'img-fluid', style: 'width:455px; height: 255px;' %>
+          <% if post.avatar.attached? %>
+            <%= image_tag post.avatar.first, alt: '', class: 'img-fluid', style: 'width:455px; height: 255px;' %>
+          <% end %>
         <% end %>
         <p><%= post.content %></p>
       </div>
