@@ -1,64 +1,138 @@
-<style>
-.avatar {
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  object-fit: cover;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  border-color: skyblue;
-  border-style: solid;
-  padding: 5px
-}
-</style>
-
-<%= link_to followers_path(@user.username) do %>
-  <p> Followers Count: <%= @user.followers.count %> </p>
-<% end %>
-<%= link_to followings_path(@user.username) do %>
-  <p> Followings Count: <%= @user.followings.count %> </p>
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'style' %>
 <% end %>
 
-<div style="margin: 2rem">
-  <% if @user.avatar.attached? %>
-    <%= image_tag @user.avatar, width: "50", class: "avatar" %>
-  <% else %>
-    <%= image_tag 'default_profile.png' , width: "50", class: "avatar" %>
-  <% end %>
+<!---------------------------MOdal Section  satrts------------------->
+
+<div class="modal fade" id="followers" >
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title h4">Followers</div>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <ul class="list-unstyled">
+          <% @user.followers.each do |follower| %>
+            <%= link_to user_path(follower.username), class: "text-decoration-none" do %>
+              <li class="media hover-media">
+                <% if follower.avatar.attached? %>
+                  <%= image_tag follower.avatar, width: "60", class: "rounded-circle avatar" %>
+                <% else %>
+                  <%= image_tag 'default_profile.png', width: "60", class: "rounded-circle avatar" %>
+                <% end %>
+                <div class="media-body text-dark" style="margin-left: 1rem">
+                  <h6 class="media-header"><%= follower.first_name %>, <strong><%= follower.last_name %></strong></h6>
+                  <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+              </li>
+            <% end %>
+            
+            <hr class="my-3">
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
-<%= notice %>
-<% if current_user %>
-  <% if current_user.id != @user.id %>
-    <% if current_user.following?(@user) %>
-      <%= button_to 'Unfollow', unfollow_path(@user), method: :delete %>
-    <% else %>
-      <%= button_to 'Follow', follow_path(@user), method: :post %>
-    <% end %>
-  <% end %>
-<% end %>
-<ul style="font-size: 1.5rem">
-  <li>Your account creation date: <span style="font-style: bold;"><%= @user.created_at.strftime("%Y-%m-%d") %></span></li>
-  <br>
-  <li>Your username: <span style="font-style: bold;"><%= @user.username %></span></li>
-  <li>Your email: <span style="font-style: bold;"><%= @user.email %></span></li>
-  <li>Your first name: <span style="font-style: bold;"><%= @user.first_name %></span></li>
-  <li>Your last name: <span style="font-style: bold;"><%= @user.last_name %></span></li>
-  <li>Your date of birth: <span style="font-style: bold;"><%= @user.date_of_birth %></span></li>
-  <li>Your phone number: <span style="font-style: bold;"><%= @user.phone %></span></li>
-  <li> Your country: <span style="font-style: bold;"><%= @user.country.name %></span></li>
-  <li> Your Job Title: <span style="font-style: bold;"><%= @user.job_title %></span></li>
-  <li>Your bio: <span style="font-style: bold;"><%= @user.bio %></span></li>
-</ul>
+<div class="modal fade" id="followings" >
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
 
-<ul>
-  <% if @posts %>
-    <% @posts.each do |post| %>
-        <li>
-          <%= link_to show_post_path(post) do %>
-            <p><%= post.title %></p>
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title h4">Followings</div>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <ul class="list-unstyled">
+          <% @user.followings.each do |following| %>
+
+            <%= link_to user_path(following.username), class: "text-decoration-none" do %>
+              <li class="media hover-media">
+                <% if following.avatar.attached? %>
+                  <%= image_tag following.avatar, width: "60", class: "rounded-circle avatar" %>
+                <% else %>
+                  <%= image_tag 'default_profile.png', width: "60", class: "rounded-circle avatar" %>
+                <% end %>
+                <div class="media-body text-dark" style="margin-left: 1rem">
+                  <h6 class="media-header"><%= following.first_name %>, <strong><%= following.last_name %></strong></h6>
+                  <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+              </li>
+            <% end %>
+            
+            <hr class="my-3">
           <% end %>
-        </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------------------------------MOdal Ends---------------------------->
+<!-----------------------------------Banner/img Starts-------------------->
+<div class="banner d-flex flex-column justify-content-center" style="gap: 5rem">
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar, width: "70", class: "rounded-circle avatar" %>
+    <% else %>
+      <%= image_tag 'default_profile.png', width: "70", class: "rounded-circle avatar" %>
     <% end %>
-  <% end %>
-</ul>
+
+    <h3 class="text-light"><%= "#{@user.first_name} #{@user.last_name}" %></h3>
+    <p class="text-light"><%= current_user.bio %></p>
+
+  </div>
+  <div class="d-flex justify-content-center align-items-end">
+    <ul class="nav text-light">
+      <li class="nav-item nav-link active">Fotoğraflar</li>
+      <li class="nav-item nav-link active">Postlar</li>
+      <li><a href="#followers" class="nav-item nav-link active text-light" data-toggle="modal" style="">Followers</a></li>
+      <li><a href="#followings" class="nav-item nav-link active text-light" data-toggle="modal" style="">Followings</a></li>
+    </ul>
+  </div>
+</div>
+
+<!--------------------Image Portfolio----------------->
+
+<% if !@user.posts.empty? %>
+  <div class="grid-template container my-4" style="grid-template-columns: repeat(3,1fr)">
+    <% @user.posts.each do |post| %>
+      <div>
+        <h3 style="position: relative"><%= post.title.capitalize %> <span style="position: absolute; color:#aaa; right: 0; font-size: 1rem;"><%= post.created_at.strftime('%B %d, %Y') %></span></h3>
+        <%= link_to show_post_path(post) do %>
+          <%= image_tag post.avatar.first, alt: '', class: 'img-fluid', style: 'width:455px; height: 255px;' %>
+        <% end %>
+        <p><%= post.content %></p>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <h1 style="padding: 10rem; text-align: center">The user has not shared any posts yet.</h1>
+<% end %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const profileAvatar = document.getElementById("profile-avatar");
+    const dropdownMenu = document.getElementById("dropdown-menu");
+
+    profileAvatar.addEventListener("click", function (event) {
+      event.stopPropagation(); // Menü kapanmasın diye tıklamayı engelle
+      dropdownMenu.style.display =
+        dropdownMenu.style.display === "block" ? "none" : "block"; // Menü göster/gizle
+    });
+
+    // Sayfanın herhangi bir yerine tıklanırsa menüyü kapat
+    document.addEventListener("click", function () {
+      dropdownMenu.style.display = "none"; // Menü kapanacak
+    });
+  });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>

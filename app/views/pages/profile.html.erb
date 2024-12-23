@@ -99,8 +99,8 @@
 
 <!--------------------Image Portfolio----------------->
 
-<div class="grid-template container my-4" style="grid-template-columns: repeat(3,1fr)">
-  <% if @user.posts %>
+<% if !@user.posts.empty? %>
+  <div class="grid-template container my-4" style="grid-template-columns: repeat(3,1fr)">
     <% @user.posts.each do |post| %>
       <div>
         <h3 style="position: relative"><%= post.title.capitalize %> <span style="position: absolute; color:#aaa; right: 0; font-size: 1rem;"><%= post.created_at.strftime('%B %d, %Y') %></span></h3>
@@ -110,10 +110,10 @@
         <p><%= post.content %></p>
       </div>
     <% end %>
-  <% else %>
-    <h1>The user has not shared any posts yet.</h1>
-  <% end %>
-</div>
+  </div>
+<% else %>
+  <h1 style="padding: 10rem; text-align: center">The user has not shared any posts yet.</h1>
+<% end %>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
