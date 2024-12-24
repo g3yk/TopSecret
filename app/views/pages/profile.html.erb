@@ -19,9 +19,9 @@
             <%= link_to user_path(follower.username), class: "text-decoration-none" do %>
               <li class="media hover-media">
                 <% if follower.avatar.attached? %>
-                  <%= image_tag follower.avatar, width: "60", class: "rounded-circle avatar" %>
+                  <%= image_tag follower.avatar, width: "45px",height: "45px", class: "rounded-circle avatar" %>
                 <% else %>
-                  <%= image_tag 'default_profile.png', width: "60", class: "rounded-circle avatar" %>
+                  <%= image_tag 'default_profile.png', width: "45px",height: "45px", class: "rounded-circle avatar" %>
                 <% end %>
                 <div class="media-body text-dark" style="margin-left: 1rem">
                   <h6 class="media-header"><%= follower.first_name %>, <strong><%= follower.last_name %></strong></h6>
@@ -78,21 +78,37 @@
 <div class="banner d-flex flex-column justify-content-center" style="gap: 5rem">
   <div class="d-flex flex-column justify-content-center align-items-center">
     <% if @user.avatar.attached? %>
-      <%= image_tag @user.avatar, width: "70", class: "rounded-circle avatar" %>
+      <%= image_tag @user.avatar, width: "100px",height: "100px", class: "rounded-circle avatar" %>
     <% else %>
       <%= image_tag 'default_profile.png', width: "70", class: "rounded-circle avatar" %>
     <% end %>
 
     <h3 class="text-light"><%= "#{@user.first_name} #{@user.last_name}" %></h3>
-    <p class="text-light"><%= current_user.bio %></p>
+    <div class="d-flex flex-column align-items-center justify-content-center text-center" style="height: auto;">
+    <p class="text-light" style="max-width: 60ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="bio-content">
+      <%= @user.bio if @user.bio.present? %>
+    </p>
+    <% if @user.bio.present? && @user.bio.length > 100 %>
+      <button class="btn btn-link text-light p-0" id="read-more-btn">Read More</button>
+    <% end %>
+  </div>
+  
 
   </div>
   <div class="d-flex justify-content-center align-items-end">
     <ul class="nav text-light">
       <li class="nav-item nav-link active">Fotoğraflar</li>
       <li class="nav-item nav-link active">Postlar</li>
-      <li><a href="#followers" class="nav-item nav-link active text-light" data-toggle="modal" style="">Followers</a></li>
-      <li><a href="#followings" class="nav-item nav-link active text-light" data-toggle="modal" style="">Followings</a></li>
+      <li>
+      <a href="#followers" class="nav-item nav-link active text-light" data-toggle="modal">
+        Followers: <%= @user.followers.count %>
+      </a>
+    </li>
+      <li>
+      <a href="#followings" class="nav-item nav-link active text-light" data-toggle="modal">
+        Followings: <%= @user.followings.count %>
+      </a>
+    </li>
     </ul>
   </div>
 </div>
@@ -114,7 +130,7 @@
     <% end %>
   </div>
 <% else %>
-  <h1 style="padding: 10rem; text-align: center">The user has not shared any posts yet.</h1>
+  <h2 style="padding: 10rem; text-align: center">The user has not shared any posts yet.</h1>
 <% end %>
 
 <script>
@@ -138,3 +154,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+  const readMoreBtn = document.getElementById("read-more-btn");
+  const bioContent = document.getElementById("bio-content");
+
+  if (readMoreBtn && bioContent) {
+    readMoreBtn.addEventListener("click", () => {
+      if (bioContent.style.whiteSpace === "nowrap") {
+        bioContent.style.whiteSpace = "normal";
+        bioContent.style.overflow = "visible";
+        bioContent.style.textOverflow = "clip";
+        readMoreBtn.textContent = "Read Less";
+      } else {
+        bioContent.style.whiteSpace = "nowrap";
+        bioContent.style.overflow = "hidden";
+        bioContent.style.textOverflow = "ellipsis";
+        readMoreBtn.textContent = "Read More";
+      }
+    });
+  }
+});
+
+</script>

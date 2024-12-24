@@ -10,24 +10,29 @@
 
 }
 </style>
+
+
 <h1 class="display-4 text-center mb-4">Followings</h1>
-<ul class="list-group list-group-flush">
-  <% @followings.each do |user| %>
-    <li class="list-group-item d-flex align-items-center">
-      <%= link_to user_path(user.username), class: "d-flex align-items-center text-decoration-none text-dark w-100" do %>
-        <% if user.avatar.attached? %>
-          <%= image_tag user.avatar, class: "avatar mr-3" %>
-        <% else %>
-          <%= image_tag 'default_profile.png', class: "avatar mr-3" %>
+
+<% if @followings.present? %>
+  <ul class="list-group list-group-flush" style="height: 100vh;>
+    <% @followings.each do |user| %>
+      <li class="list-group-item d-flex align-items-center">
+        <%= link_to user_path(user.username), class: "d-flex align-items-center text-decoration-none text-dark w-100" do %>
+          <% if user.avatar.attached? %>
+            <%= image_tag user.avatar, class: "avatar mr-3" %>
+          <% else %>
+            <%= image_tag 'default_profile.png', class: "avatar mr-3" %>
+          <% end %>
+          
+          <div>
+            <strong class="d-block"><%= user.username %></strong>
+            <small class="text-muted"><%= user.first_name %>, <%= user.last_name %></small>
+          </div>
         <% end %>
-        
-        <div>
-          <strong class="d-block"><%= user.username %></strong>
-          <small class="text-muted"><%= user.first_name %>, <%= user.last_name %></small>
-        </div>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-
-
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h2 style="padding: 10rem; text-align: center; height: 100vh;"><%= @user.first_name %> has no followings.</h1>
+<% end %>

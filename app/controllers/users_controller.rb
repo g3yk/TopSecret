@@ -80,6 +80,17 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def search
+    if params[:query].present?
+      query = "%#{params[:query]}%"
+      @users = User.where("LOWER(username) LIKE ? OR LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ?", query.downcase, query.downcase, query.downcase)
+    else
+      @users = User.none
+    end
+  end
+
+
   private
 
   def create_user_params

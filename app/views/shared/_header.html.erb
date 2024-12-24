@@ -1,11 +1,7 @@
-
 <% content_for :head do %>
   <%= javascript_include_tag "header" %>
-  
+<% end %>
 
-  <% end %>
-
-  
 <style>
   /* Add a translucent and blurry effect to the header */
   .header {
@@ -14,61 +10,258 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for better distinction */
     top: 0; /* Stick to the top of the page */
     z-index: 1020; /* Ensure it stays above other content */
-    position:flex;
+    position: flex;
     z-index: 6;
   }
 
   .menu-item:hover {
     text-decoration: none; /* Add underline on hover for links */
   }
+
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search-container .form-inline {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* Transparent search container */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Transparent search input */
+.search-input {
+  display: none;
+  width: 250px;
+  padding-left: 30px; /* Space for the search icon */
+
+  
+  transition: all 0.3s ease-out; /* Slide-in effect */
+  opacity: 0; /* Initially hidden */
+}
+
+/* Make search input visible when active */
+.search-container.active .search-input {
+  display: inline-block;
+  opacity: 1;
+  transform: translateX(0); /* Slide in */
+}
+
+/* Transparent search icon */
+.search-icon {
+  position: absolute;
+  left: 10px;
+  color: rgba(255, 255, 255, 0.7); /* Semi-transparent icon color */
+  cursor: pointer;
+}
+
+/* Hide the search icon when the input field is active */
+.search-container.active .search-icon {
+  display: none;
+}
+
+/* Transparent submit button */
+.search-input .btn {
+  background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent button */
+  color: white; /* White text color */
+  border: none;
+}
+
+.search-input .btn:hover {
+  background-color: rgba(0, 0, 0, 0.3); /* Darker button on hover */
+}
+
+
+  /* Style for search input box */
+  .form-control {
+    padding-left: 30px;
+    transition: padding-left 0.3s ease-out;
+  }
+
+  /* Add some padding when the input field is visible */
+  .search-container.active .form-control {
+    padding-left: 30px;
+  }
+
+  /* Initially hide the logout button */
+.avatar-logout-container .logout-btn {
+  display: none;
+  margin-top: 10px; 
+}
+
+/* Show the logout button when hovering over the avatar container */
+.avatar-logout-container:hover .logout-btn {
+  display: inline-block;
+}
+
+/* Adjust avatar size for different screen sizes */
+@media (max-width: 768px) {
+  .avatar-logout-container img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Always show logout button in responsive mode */
+@media (max-width: 768px) {
+  .logout-btn {
+    display: block !important; /* Always visible in responsive mode */
+    margin-top: 5px;
+  }
+}
+
+/* Default behavior for logout button */
+.logout-btn {
+  display: none; /* Hidden by default */
+  margin-top: 10px;
+}
+
+/* Show logout button on hover (desktop only) */
+.avatar-logout-container:hover .logout-btn {
+  display: inline-block;
+}
+
+/* Hide avatar in the hamburger dropdown (collapsed navbar) */
+@media (max-width: 768px) {
+  .avatar-logout-container {
+    display: none;
+  }
+}
+/* Avatar and logout dropdown on hover */
+.avatar-logout-container {
+  position: relative;
+}
+
+.logout-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 10; /* Ensures it appears above other elements */
+}
+
+.avatar-logout-container:hover .logout-dropdown {
+  display: block;
+}
+
+/* Optional: Add some styling to make the dropdown look better */
+.logout-btn {
+  background-color: rgba(48, 151, 209, 1);
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: rgba(255, 0, 0, 0.7); /* Red background on hover */
+  color: white;
+}
+
 </style>
 
 <header class="header">
-  <nav class="navbar navbar-expand-md navbar-dark">
-    <a href="/index" class="navbar-brand">
-      <%= image_tag "brand.png", alt: "Logo", class: "img-fluid", width: "80px", height: "100px" %>
-    </a>
-    <button class="navbar-toggler" data-toggle="collapse" data-target="#responsive">
+<nav class="navbar navbar-expand-md navbar-dark">
+  <a href="/index" class="navbar-brand">
+    <%= image_tag "brand.png", alt: "Logo", class: "img-fluid", width: "80px", height: "100px" %>
+  </a>
+
+  <% if user_signed_in? %>
+    <!-- Avatar replaces the hamburger icon in mobile -->
+    <button class="navbar-toggler d-md-none" type="button" data-toggle="collapse" data-target="#responsive" aria-controls="responsive" aria-expanded="false" aria-label="Toggle navigation">
+      <% if current_user&.avatar&.attached? %>
+        <%= image_tag current_user.avatar, alt: "Avatar", class: "rounded-circle", width: "50", height: "50", id: "navbar-avatar" %>
+      <% else %>
+        <%= image_tag 'default_profile.png', alt: "Default Avatar", class: "rounded-circle", width: "50", height: "50" %>
+      <% end %>
+    </button>
+  <% else %>
+    <!-- Default hamburger icon for guests -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#responsive">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="responsive">
-      <ul class="navbar-nav mr-auto text-capitalize">
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <a href="/index" class="nav-link menu-item">Ana Sayfa</a>
-          </li>
-          <li class="nav-item">
-            <a href="/profile" class="nav-link menu-item">Profil</a>
-          </li>
-          <li class="nav-item">
-            <a href="#modalview" class="nav-link menu-item" data-toggle="modal">Mesajlar</a>
-          </li>
-          <li class="nav-item" style="margin-left:15px;">
-            <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-danger nav-link menu-item", 
-                  data: { confirm: "Are you sure you want to logout?" }  %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", login_path, class: "nav-link menu-item" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Signup", sign_up_path, class: "nav-link menu-item" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+  <% end %>
+
+  <div class="collapse navbar-collapse" id="responsive">
+    <ul class="navbar-nav mr-auto text-capitalize">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <a href="/index" class="nav-link menu-item">Ana Sayfa</a>
+        </li>
+        <li class="nav-item">
+          <a href="/profile" class="nav-link menu-item">Profil</a>
+        </li>
+        <li class="nav-item">
+          <a href="#modalview" class="nav-link menu-item" data-toggle="modal">Mesajlar</a>
+        </li>
+        <li class="nav-item search-container">
+          <span class="search-icon" id="search-icon">
+            <i class="fas fa-search"></i>
+          </span>
+          <%= form_with url: search_users_path, method: :get, local: true, class: "form-inline search-input" do %>
+            <div class="form-group">
+              <%= text_field_tag :query, params[:query], placeholder: "Search users...", class: "form-control mr-2" %>
+             <%= submit_tag "Search", class: "btn btn-transparent search-icon-btn", style:"padding: 15px !important;" %>
+
+            </div>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-danger nav-link logout-btn" %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Login", login_path, class: "nav-link menu-item" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Signup", sign_up_path, class: "nav-link menu-item" %>
+        </li>
+      <% end %>
+    </ul>
 
     <% if user_signed_in? %>
-      <a href="/account">
-        <% if current_user && current_user.avatar.attached? %>
-          <!-- Avatar for larger screens (hidden on mobile) -->
-          <%= image_tag current_user.avatar, alt: "Profile Avatar", class: "rounded-circle ml-3 d-none d-md-block", width: "80px", height: "80px", id: "profile-avatar" %>  
+      <!-- Avatar and dropdown for logout -->
+      <div class="avatar-logout-container d-none d-md-flex align-items-center ml-auto">
+        <% if current_user&.avatar&.attached? %>
+          <a href="/account">
+            <%= image_tag current_user.avatar, alt: "Profile Avatar", class: "rounded-circle", width: "75", height: "75", id: "desktop-avatar" %>
+          </a>
         <% else %>
-          <%= image_tag 'default_profile.png', alt: "Default Avatar", class: "rounded-circle ml-3 d-none d-md-block", width: "60", height: "60" %>
+          <%= image_tag 'default_profile.png', alt: "Default Avatar", class: "rounded-circle", width: "75", height: "75" %>
         <% end %>
-      </a>
+
+        <!-- Logout dropdown on hover -->
+        <div class="logout-dropdown ml-3">
+          <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-danger nav-link logout-btn" %>
+        </div>
+      </div>
     <% end %>
-  </nav>
+  </div>
+</nav>
+
+
+  
 </header>
 
+<script>
+  // JavaScript to toggle the visibility of the search bar with slide-in animation
+  document.getElementById("search-icon").addEventListener("click", function(event) {
+    var searchContainer = document.querySelector(".search-container");
+    searchContainer.classList.toggle("active");
+    event.stopPropagation(); // Prevent the click event from propagating
+  });
 
+  // Close the search bar if clicking anywhere outside of the search container
+  document.addEventListener("click", function(event) {
+    var searchContainer = document.querySelector(".search-container");
+    if (!searchContainer.contains(event.target)) {
+      searchContainer.classList.remove("active");
+    }
+  });
+</script>

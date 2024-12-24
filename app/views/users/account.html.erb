@@ -15,7 +15,7 @@
     <!-- User Avatar, Greeting, and Follow Buttons (Moved Above the Info List) -->
     <div class="col-md-12 text-center">
       <% if @user.avatar.attached? %>
-        <%= image_tag @user.avatar, class: "avatar" %>
+        <%= image_tag @user.avatar,width: "100px",height: "100px" %>
       <% else %>
         <%= image_tag 'default_profile.png', class: "avatar" %>
       <% end %>

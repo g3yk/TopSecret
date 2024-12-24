@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "contact" => "pages#contact"
   get "index", to: "pages#index"
   get "profile" => "pages#profile"
+  
   # Authorization
   get "sign_up", to: "users#sign_up", as: :sign_up
   post "sign_up", to: "users#create"
@@ -40,6 +41,9 @@ Rails.application.routes.draw do
   get ":username/followers", to: "followships#followers", as: :followers
   get ":username/followings", to: "followships#followings", as: :followings
 
+  # Search
+  get "search", to: "users#search", as: :search_users
+
   # Users
   get "users", to: "users#all"
   get "/:username", to: "users#show", as: :user
@@ -56,7 +60,4 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/*
   get "service-worker" => "rails/pwa#service_worker", :as => :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", :as => :pwa_manifest
-
-  # Defines the root path route ("/")
-  # root "posts#index"
 end

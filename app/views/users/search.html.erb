@@ -1,0 +1,23 @@
+<h1 class="text-center mb-4">Search Results</h1>
+
+<% if @users.any? %>
+  <ul class="list-group" style="height: 100vh;">
+    <% @users.each do |user| %>
+      <li class="list-group-item d-flex align-items-center">
+        <%= link_to user_path(user.username), class: "d-flex align-items-center text-decoration-none text-dark" do %>
+          <% if user.avatar.attached? %>
+            <%= image_tag user.avatar, class: "avatar mr-3 rounded-circle", width: "50" %>
+          <% else %>
+            <%= image_tag 'default_profile.png', class: "avatar mr-3 rounded-circle", width: "50" %>
+          <% end %>
+          <div>
+            <strong class="d-block"><%= user.username %></strong>
+            <small class="text-muted"><%= user.first_name %> <%= user.last_name %></small>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="text-center" style="height: 100vh;">No users found matching your search query.</p>
+<% end %>
