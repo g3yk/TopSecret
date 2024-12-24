@@ -207,7 +207,7 @@
           <%= form_with url: search_users_path, method: :get, local: true, class: "form-inline search-input" do %>
             <div class="form-group">
               <%= text_field_tag :query, params[:query], placeholder: "Search users...", class: "form-control mr-2" %>
-             <%= submit_tag "Search", class: "btn btn-transparent search-icon-btn", style:"padding: 15px !important;" %>
+             <%= submit_tag "Search", class: "btn btn-transparent search-icon-btn"%>
 
             </div>
           <% end %>
